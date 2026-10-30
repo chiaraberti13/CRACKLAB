@@ -1,0 +1,10 @@
+# Issue chooser. Blank issues are disabled so every issue maps to a roadmap item
+# or a reproducible bug.
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability (private)
+    url: https://github.com/chiaraberti13/CRACKLAB/security/advisories/new
+    about: Never open a public issue for an unpatched vulnerability. See SECURITY.md.
+  - name: Roadmap
+    url: https://github.com/chiaraberti13/CRACKLAB/blob/main/ROADMAP.md
+    about: Check the phase and area before opening an issue.

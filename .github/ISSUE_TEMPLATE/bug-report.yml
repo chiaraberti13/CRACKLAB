@@ -1,0 +1,56 @@
+name: Bug report
+description: Behaviour differs from what the code or documentation promises. Not for security vulnerabilities.
+title: 'bug: short description'
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Security vulnerabilities must be reported privately** — see SECURITY.md.
+        **Never paste a real password**, personal data, or a full hash. Use an invented example.
+  - type: input
+    id: area
+    attributes:
+      label: Area and screen
+      placeholder: 'Prova / comparison table / scenario selector'
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: CrackLab version or commit
+      placeholder: '0.x.y or commit SHA'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: 'Browser + version, OS, desktop/mobile'
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Use an invented example password, never a real one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behaviour
+    validations:
+      required: true
+  - type: input
+    id: roadmap-ref
+    attributes:
+      label: Related roadmap item (if any)
+      placeholder: 'Fase 1 — clessidra'
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This report contains no real password, personal data or full hash.
+          required: true

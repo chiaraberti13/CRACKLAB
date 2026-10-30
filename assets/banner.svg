@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" role="img" aria-label="CrackLab — credential attack simulator">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11162100" />
+      <stop offset="0" stop-color="#141925" />
+      <stop offset="1" stop-color="#0c0f17" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" rx="18" fill="url(#bg)" />
+  <rect x="0.5" y="0.5" width="1199" height="239" rx="18" fill="none" stroke="#2a3242" />
+
+  <!-- Hourglass mark: red top (attack), gold base (defense). -->
+  <g transform="translate(96 120)">
+    <circle r="62" fill="#0a0d14" stroke="#2a3242" />
+    <path d="M-26 -34h52M-26 34h52" stroke="#3a4458" stroke-width="5" stroke-linecap="round" />
+    <path d="M-22 -34c0 22 44 20 44 34s-44 12-44 34" fill="none" stroke="#f26d72" stroke-width="5" stroke-linecap="round" />
+    <path d="M22 -34c0 22-44 20-44 34s44 12 44 34" fill="none" stroke="#d6a23c" stroke-width="5" stroke-linecap="round" />
+    <circle cy="2" r="4" fill="#6ea8fe" />
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <text x="196" y="112" fill="#eef1f7" font-size="58" font-weight="700" letter-spacing="-0.5">CrackLab</text>
+    <text x="198" y="150" fill="#8a93a6" font-size="21" font-weight="500">Credential Attack Simulator — 100% client-side</text>
+    <text x="198" y="182" fill="#c2c9d6" font-size="18" font-style="italic">Non predice quando cadrà la tua password. Mostra cosa cambia il costo di un attacco.</text>
+  </g>
+</svg>

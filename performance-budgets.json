@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "measuredOn": "2026-10-30",
+    "commit": "unreleased",
+    "initialJsGzipBytes": 0,
+    "largestRoute": "src/App.tsx",
+    "largestRouteGzipBytes": 0
+  },
+  "budgets": {
+    "initialJsGzipBytes": 160000,
+    "routeChunkGzipBytes": 90000
+  }
+}

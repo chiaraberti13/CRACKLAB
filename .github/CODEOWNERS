@@ -1,0 +1,59 @@
+# Repository governance and automation
+/.github/CODEOWNERS @chiaraberti13
+/.github/dependabot.yml @chiaraberti13
+/.github/labels.json @chiaraberti13
+/.github/security-exceptions.yml @chiaraberti13
+/.github/workflows/ @chiaraberti13
+/CHANGELOG.md @chiaraberti13
+/ROADMAP.md @chiaraberti13
+
+# Dependency and build trust boundary
+/.npmrc @chiaraberti13
+/.nvmrc @chiaraberti13
+/package.json @chiaraberti13
+/package-lock.json @chiaraberti13
+/vite.config.ts @chiaraberti13
+/vitest.config.ts @chiaraberti13
+/scripts/verify-lockfile.mjs @chiaraberti13
+/scripts/verify-lockfile.test.mjs @chiaraberti13
+/scripts/release-metadata.mjs @chiaraberti13
+/scripts/release-metadata.test.mjs @chiaraberti13
+/scripts/performance-budget.mjs @chiaraberti13
+/scripts/performance-budget.test.mjs @chiaraberti13
+/performance-budgets.json @chiaraberti13
+/lighthouse-budget.json @chiaraberti13
+/lighthouserc.json @chiaraberti13
+
+# The estimation model — the trust-critical, contestable core
+/src/model/ @chiaraberti13
+/scripts/model-data.mjs @chiaraberti13
+/scripts/model-data.test.mjs @chiaraberti13
+/docs/MODEL.md @chiaraberti13
+
+# Privacy, security policy, scanners and deployment hardening
+/.gitleaks.toml @chiaraberti13
+/osv-scanner.toml @chiaraberti13
+/eslint.config.js @chiaraberti13
+/.editorconfig @chiaraberti13
+/.prettierignore @chiaraberti13
+/.prettierrc.json @chiaraberti13
+/vercel.json @chiaraberti13
+/src/store.ts @chiaraberti13
+/scripts/deployment-security.mjs @chiaraberti13
+/scripts/deployment-security.test.mjs @chiaraberti13
+/e2e/network-privacy.spec.ts @chiaraberti13
+/SECURITY.md @chiaraberti13
+/CONTRIBUTING.md @chiaraberti13
+/docs/THREAT_MODEL.md @chiaraberti13
+/docs/FRONTEND_SECURITY.md @chiaraberti13
+/docs/PRIVACY.md @chiaraberti13
+/docs/SECURITY_SCANNING.md @chiaraberti13
+/docs/RELEASING.md @chiaraberti13
+/docs/REPOSITORY_POSTURE.md @chiaraberti13
+
+# Internationalization and design system
+/src/i18n/ @chiaraberti13
+/src/index.css @chiaraberti13
+/docs/INTERNATIONALIZATION.md @chiaraberti13
+/docs/DESIGN_SYSTEM.md @chiaraberti13
+/docs/ACCESSIBILITY.md @chiaraberti13

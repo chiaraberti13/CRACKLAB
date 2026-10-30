@@ -1,0 +1,34 @@
+# Changelog
+
+All notable changes to CrackLab are documented in this file. The project follows
+[Semantic Versioning](https://semver.org/) and keeps this structure compatible with
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+Use this section only for changes already merged into `main` but not yet included in a tagged release.
+
+## [0.1.0] - 2026-10-30
+
+### Added
+
+- Repository foundations aligned with the house template: GPL-3.0 licence, bilingual IT/EN README,
+  `CONTRIBUTING`, `SECURITY`, `CODE_OF_CONDUCT`, `ROADMAP` at root, and a `.github` set (CODEOWNERS,
+  issue/PR templates, managed labels, dependabot).
+- Toolchain and quality gates: TypeScript strict, Vite 8, Tailwind 4, ESLint with privacy/no-cracker
+  guardrails, Prettier, Vitest + fast-check, Playwright + axe, Size Limit, Lighthouse CI config,
+  gitleaks/osv policies, and a `verify` pipeline wired into CI.
+- Fase 0 estimation model: versioned `benchmarks.json` and `pricing.json` with `source`/`date`/`kind`,
+  pure time and cost formulas across three declared scenarios, and tests (expected monotonicity,
+  provenance presence, a 12-month freshness warning, property-based checks).
+- `StrengthMeter` and the MVP "Prova" screen: local predictability estimate with zxcvbn-ts (IT/EN
+  dictionaries lazy-loaded), the same password compared across MD5/SHA-256/bcrypt/Argon2id by order of
+  magnitude and illustrative cost, a lesson and an actionable defense, bilingual UI and full keyboard access.
+- Verifiable privacy: strict CSP and security headers in `vercel.json`, no third-party scripts or fonts,
+  an anti-autofill sample input that is never persisted, and a Playwright network-privacy test that asserts
+  nothing leaves the browser while typing and computing.
+
+### Security
+
+- The application is static and client-side: it introduces no backend, telemetry, credential collection,
+  real cracking, or offensive traffic. The sample password is held in memory only and never persisted.

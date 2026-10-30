@@ -1,0 +1,62 @@
+[
+  {
+    "name": "area:model",
+    "color": "D4A72C",
+    "description": "Estimation model, benchmarks, pricing and scenarios"
+  },
+  {
+    "name": "area:privacy",
+    "color": "B60205",
+    "description": "Client-side privacy, CSP, network-leak prevention"
+  },
+  {
+    "name": "area:sim",
+    "color": "5319E7",
+    "description": "Offline/online attack simulation engines"
+  },
+  {
+    "name": "area:ux",
+    "color": "7057FF",
+    "description": "Prova/Capisci/Progetta flows, UI and usability"
+  },
+  {
+    "name": "area:a11y",
+    "color": "0E8A16",
+    "description": "Accessibility (WCAG 2.1 AA), ARIA, reduced-motion"
+  },
+  {
+    "name": "area:dev",
+    "color": "0075CA",
+    "description": "Architecture, code quality, CI and release engineering"
+  },
+  {
+    "name": "P0",
+    "color": "B60205",
+    "description": "Blocks safe use or a reliable release"
+  },
+  {
+    "name": "P1",
+    "color": "D93F0B",
+    "description": "High value and high priority"
+  },
+  {
+    "name": "P2",
+    "color": "FBCA04",
+    "description": "Important improvement"
+  },
+  {
+    "name": "P3",
+    "color": "C2E0C6",
+    "description": "Later evolution"
+  },
+  {
+    "name": "roadmap",
+    "color": "5319E7",
+    "description": "Tracks an item in ROADMAP.md"
+  },
+  {
+    "name": "bug",
+    "color": "D73A4A",
+    "description": "Behaviour differs from the documented contract"
+  }
+]

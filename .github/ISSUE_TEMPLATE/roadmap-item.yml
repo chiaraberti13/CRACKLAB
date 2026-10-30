@@ -1,0 +1,64 @@
+name: Roadmap item
+description: Track work on an item listed in ROADMAP.md.
+title: '[area] short description'
+labels: ['roadmap']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every roadmap issue maps to work in `ROADMAP.md`. If none fits, propose it in `ROADMAP.md` first.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - 'model — estimation model, benchmarks, pricing'
+        - 'privacy — client-side privacy, CSP, no leaks'
+        - 'sim — attack simulation engines'
+        - 'ux — Prova/Capisci/Progetta, UI'
+        - 'a11y — accessibility'
+        - 'dev — architecture, CI, release'
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Roadmap phase
+      options:
+        - 'Fase 0 — Fondamenta e modello'
+        - 'Fase 1 — MVP Prova'
+        - 'Fase 2 — Capisci + Progetta (v1.0)'
+        - 'Fase 3 — Crescita'
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - 'P0 — blocks safe use or a reliable release'
+        - 'P1 — high value, high priority'
+        - 'P2 — important improvement'
+        - 'P3 — later evolution'
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope of this issue
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Completion criterion and evidence
+      description: How completion will be proven (test, CI run, committed evidence).
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This issue contains no real password, personal data or secrets.
+          required: true
