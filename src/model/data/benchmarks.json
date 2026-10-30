@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "algorithm": "md5",
+      "scenario": "prudent",
+      "params": "unsalted MD5",
+      "hardware": "1x consumer GPU",
+      "hashesPerSecond": 1.0e10,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30",
+      "notes": "MD5 is a fast, non-password hash included only to show how cheap a weak storage choice is."
+    },
+    {
+      "algorithm": "md5",
+      "scenario": "central",
+      "params": "unsalted MD5",
+      "hardware": "small rented GPU cluster",
+      "hashesPerSecond": 1.0e11,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "md5",
+      "scenario": "aggressive",
+      "params": "unsalted MD5",
+      "hardware": "multi high-end GPU cluster",
+      "hashesPerSecond": 1.0e12,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "sha256",
+      "scenario": "prudent",
+      "params": "unsalted SHA-256",
+      "hardware": "1x consumer GPU",
+      "hashesPerSecond": 3.0e9,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "sha256",
+      "scenario": "central",
+      "params": "unsalted SHA-256",
+      "hardware": "small rented GPU cluster",
+      "hashesPerSecond": 3.0e10,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "sha256",
+      "scenario": "aggressive",
+      "params": "unsalted SHA-256",
+      "hardware": "multi high-end GPU cluster",
+      "hashesPerSecond": 3.0e11,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "bcrypt",
+      "scenario": "prudent",
+      "params": "bcrypt cost 12",
+      "hardware": "1x consumer GPU",
+      "hashesPerSecond": 3.0e3,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30",
+      "notes": "A deliberate work factor makes each guess expensive; the rate is many orders of magnitude below MD5."
+    },
+    {
+      "algorithm": "bcrypt",
+      "scenario": "central",
+      "params": "bcrypt cost 12",
+      "hardware": "small rented GPU cluster",
+      "hashesPerSecond": 3.0e4,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "bcrypt",
+      "scenario": "aggressive",
+      "params": "bcrypt cost 12",
+      "hardware": "multi high-end GPU cluster",
+      "hashesPerSecond": 3.0e5,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured hashcat -b run; see data/README.md",
+      "url": "https://hashcat.net/wiki/",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "argon2id",
+      "scenario": "prudent",
+      "params": "Argon2id m=19MiB t=2 p=1",
+      "hardware": "1x consumer GPU",
+      "hashesPerSecond": 1.0e3,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured run; parameters from OWASP Password Storage Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "date": "2026-10-30",
+      "notes": "Memory-hard: the attacker pays memory as well as time, so GPU parallelism helps far less than for MD5."
+    },
+    {
+      "algorithm": "argon2id",
+      "scenario": "central",
+      "params": "Argon2id m=19MiB t=2 p=1",
+      "hardware": "small rented GPU cluster",
+      "hashesPerSecond": 1.0e4,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured run; parameters from OWASP Password Storage Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "date": "2026-10-30"
+    },
+    {
+      "algorithm": "argon2id",
+      "scenario": "aggressive",
+      "params": "Argon2id m=19MiB t=2 p=1",
+      "hardware": "multi high-end GPU cluster",
+      "hashesPerSecond": 1.0e5,
+      "kind": "assumption",
+      "source": "Illustrative order-of-magnitude pending a measured run; parameters from OWASP Password Storage Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "date": "2026-10-30"
+    }
+  ]
+}

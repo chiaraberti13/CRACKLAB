@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@theme {
+  /* CrackLab "laboratory" visual system.
+     Dark base, bronze/gold for defense, red for attack, neutral gray for
+     "assumption". Tokens are the single source for surfaces, copy and accents so
+     components never hard-code hex values. */
+  --color-canvas: #0c0f17;
+  --color-surface: #141925;
+  --color-surface-subtle: #1b2130;
+  --color-stroke: #2a3242;
+  --color-stroke-strong: #3a4458;
+
+  --color-ink-primary: #eef1f7;
+  --color-ink-secondary: #c2c9d6;
+  --color-ink-muted: #8a93a6;
+
+  /* Attack (red) and defense (bronze/gold). */
+  --color-attack: #f26d72;
+  --color-attack-soft: #2a1618;
+  --color-defense: #d6a23c;
+  --color-defense-soft: #2a2213;
+
+  /* Neutral gray marks an assumption / illustrative figure. */
+  --color-assumption: #8a93a6;
+  --color-assumption-soft: #1b2130;
+
+  --color-accent: #6ea8fe;
+  --color-accent-soft: #15223a;
+
+  /* Always-dark code / value surface. */
+  --color-code-bg: #0a0d14;
+  --color-code-ink: #d9def0;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus for keyboard users, never removed. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

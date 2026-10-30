@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "scenario": "prudent",
+      "label": "Owned consumer GPU (electricity only)",
+      "usdPerHour": 0.1,
+      "kind": "assumption",
+      "source": "Illustrative energy-only cost; excludes hardware amortisation. See data/README.md",
+      "date": "2026-10-30",
+      "notes": "No rental: the attacker owns the card, so only energy is counted."
+    },
+    {
+      "scenario": "central",
+      "label": "Small rented GPU cluster (cloud, spot)",
+      "usdPerHour": 2.5,
+      "kind": "assumption",
+      "source": "Illustrative cloud GPU spot pricing; varies by provider, region and time. See data/README.md",
+      "date": "2026-10-30"
+    },
+    {
+      "scenario": "aggressive",
+      "label": "Multi high-end GPU cluster (cloud, on-demand)",
+      "usdPerHour": 30.0,
+      "kind": "assumption",
+      "source": "Illustrative cloud GPU on-demand pricing; varies by provider, region and time. See data/README.md",
+      "date": "2026-10-30"
+    }
+  ]
+}
