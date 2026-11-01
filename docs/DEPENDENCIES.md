@@ -20,3 +20,9 @@ Dependabot opens weekly grouped PRs (production vs development, plus GitHub Acti
 
 Justify it in the PR: what it replaces, its size impact against the performance budget, and its supply-chain posture.
 A new network-capable dependency must respect the privacy boundary and may require a `docs/SECURITY_SCANNING.md` exception.
+
+## TypeScript compatibility / Compatibilità TypeScript
+
+TypeScript is constrained to `~6.0.3`: typescript-eslint 8.72.1 declares support for versions below 6.1.0. TypeScript 7 prevented a clean `npm ci`. No peer checks were bypassed.
+
+TypeScript è vincolato a `~6.0.3`: typescript-eslint 8.72.1 richiede versioni inferiori a 6.1.0. TypeScript 7 impediva `npm ci`; nessun controllo peer è stato disabilitato.

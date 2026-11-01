@@ -22,3 +22,16 @@ test('the language toggle switches the interface', async ({ page }) => {
   await page.getByRole('button', { name: 'Italiano' }).click();
   await expect(page.getByText(/non predice quando/i)).toBeVisible();
 });
+
+test('benchmark details follow the scenario and work on a narrow viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByRole('button', { name: /debole|weak/i }).click();
+  const row = page.getByRole('row').filter({ has: page.getByRole('rowheader', { name: 'Argon2id' }) });
+  await row.locator('summary').click();
+  await expect(row.locator('details')).toHaveAttribute('open', '');
+  await expect(row).toContainText('m=19MiB');
+  await expect(row).toContainText('2026-10-30');
+  await expect(row).toContainText(/Non è una misurazione locale|not a local measurement/);
+  await expect(page.locator('body')).toHaveJSProperty('scrollWidth', 390);
+});

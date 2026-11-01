@@ -23,7 +23,7 @@ false-precision figure.
 
 ### Three declared scenarios
 
-`prudent`, `central`, `aggressive` are **illustrative** attacker framings (hardware + dictionary strategy),
+`prudent`, `central`, `aggressive` are **illustrative** attacker framings (hardware and hourly pricing; the estimated guess rank stays unchanged),
 **not** statistical confidence intervals — stated plainly in the UI.
 
 ### Provenance (`kind`)
@@ -46,7 +46,7 @@ meant to be replaced by measured benchmarks via PR. See `src/model/data/README.m
 
 ### Honesty rules
 
-Costs are illustrative (cloud prices vary by time, region and availability). The in-browser KDF benchmark answers
+Costs are illustrative (cloud prices vary by time, region and availability). A future in-browser KDF benchmark will answer
 "how expensive is one verification _here_?" and is never auto-converted into an attacker-performance prediction.
 
 ## Italiano
@@ -68,8 +68,7 @@ CrackLab mostra l'**ordine di grandezza**, mai una cifra a falsa precisione.
 
 ### Tre scenari dichiarati
 
-`prudent`, `central`, `aggressive` sono inquadramenti **illustrativi** dell'attaccante (hardware + strategia di
-dizionari), **non** intervalli di confidenza — dichiarato in chiaro nella UI.
+`prudent`, `central`, `aggressive` sono inquadramenti **illustrativi** dell'attaccante (hardware e prezzo orario; il rango stimato resta invariato), **non** intervalli di confidenza — dichiarato in chiaro nella UI.
 
 ### Provenienza (`kind`)
 
@@ -84,5 +83,5 @@ Monotonie attese, property-based (`fast-check`), presenza di `source`/`date`/`ki
 
 ### Regole di onestà
 
-I costi sono illustrativi; il benchmark KDF nel browser risponde a "quanto costa una verifica _qui_?" e non diventa
+I costi sono illustrativi; il benchmark KDF nel browser, ancora pianificato, risponderà a "quanto costa una verifica _qui_?" e non diventa
 mai automaticamente una previsione sulle prestazioni dell'attaccante.

@@ -114,3 +114,7 @@ mantenendo l'avviso di copyright e licenza.
 ---
 
 © Chiara Berti — 2026
+
+## Trasparenza delle stime
+
+Espandi **Parametri e fonti** accanto a ogni algoritmo per consultare configurazione KDF, hardware, velocità ipotizzata, provenienza, data e tariffa oraria. I dettagli seguono lo scenario selezionato. Le formule sono esplicite; i dati attuali sono ipotesi, non misurazioni né previsioni. Il benchmark KDF locale e le simulazioni online restano pianificati.

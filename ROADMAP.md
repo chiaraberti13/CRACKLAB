@@ -667,3 +667,14 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 ---
 
 <p align="center"><sub>Documento di impostazione — base di sviluppo. Nomi, priorità e tempi sono adattabili.</sub></p>
+
+## Incremento verificabile — 2026-11-01
+
+- [x] Dettagli IT/EN delle stime: parametri, hardware, fonte, data, velocità, provenienza del prezzo e formule; selezione coerente con lo scenario.
+- [x] Compatibilità TypeScript con typescript-eslint ripristinata (6.0.3, lockfile aggiornato senza bypass dei peer).
+- [x] Documentazione del modello corretta: rango invariato fra scenari; benchmark KDF locale ancora pianificato.
+- [ ] Invalidazione dei risultati durante il ricalcolo, gestione errori e limite input.
+- [ ] Gestione esplicita degli estremi numerici non rappresentabili.
+- [ ] Laboratorio KDF reale con worker e limiti di risorse, prima di dichiararlo disponibile.
+
+Questo incremento migliora la verificabilità del confronto esistente; non completa i laboratori delle fasi successive.

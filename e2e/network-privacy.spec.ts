@@ -27,7 +27,7 @@ test('no password data leaves the browser while typing and evaluating', async ({
   const input = page.getByLabel(/password di prova|sample password/i);
   await input.fill(CANARY);
   // Let the debounced local evaluation and any lazy dictionary chunks load.
-  await expect(page.getByText(/tentativi stimati|estimated guesses/i)).toBeVisible();
+  await expect(page.getByText(/^(tentativi stimati|estimated guesses) \(zxcvbn\)$/i)).toBeVisible();
   await page.waitForTimeout(500);
 
   expect(offOrigin, `off-origin requests: ${offOrigin.join(', ')}`).toEqual([]);

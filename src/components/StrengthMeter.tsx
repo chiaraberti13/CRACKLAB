@@ -1,5 +1,5 @@
 import { benchmarks, pricing } from '../model/data';
-import { estimateAll, magnitudeKey } from '../model/estimate';
+import { estimateAll, lookupBenchmark, lookupPricing, magnitudeKey } from '../model/estimate';
 import type { DataKind, Scenario } from '../model/types';
 import { useCatalog } from '../i18n';
 import type { Language } from '../store';
@@ -33,6 +33,7 @@ function kindClasses(kind: DataKind): string {
 export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProps) {
   const t = useCatalog(language);
   const estimates = estimateAll(guesses, scenario, benchmarks, pricing);
+  const price = lookupPricing(pricing, scenario);
 
   return (
     <section aria-labelledby="comparison-heading" className="rounded-xl border border-stroke bg-surface p-4 sm:p-6">
@@ -61,6 +62,7 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
           </thead>
           <tbody>
             {estimates.map((e) => {
+              const benchmark = lookupBenchmark(benchmarks, e.algorithm, scenario);
               const magnitude = magnitudeKey(e.seconds);
               const fast = e.algorithm === 'md5' || e.algorithm === 'sha256';
               return (
@@ -80,6 +82,45 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
                     >
                       {t.kind[e.hashrateKind]}
                     </span>
+                    <details className="mt-2 max-w-sm text-xs text-ink-secondary">
+                      <summary className="cursor-pointer text-ink-primary">
+                        {language === 'it' ? 'Parametri e fonti' : 'Parameters and sources'}
+                      </summary>
+                      <dl className="mt-2 space-y-2 break-words">
+                        <dt>{language === 'it' ? 'Configurazione' : 'Configuration'}</dt>
+                        <dd>{benchmark.params}</dd>
+                        <dt>Hardware</dt>
+                        <dd>{benchmark.hardware}</dd>
+                        <dt>
+                          {language === 'it'
+                            ? 'Tentativi al secondo (dato del dataset)'
+                            : 'Guesses per second (dataset input)'}
+                        </dt>
+                        <dd>
+                          {new Intl.NumberFormat(language, { notation: 'scientific', maximumFractionDigits: 1 }).format(
+                            benchmark.hashesPerSecond
+                          )}
+                        </dd>
+                        <dt>{language === 'it' ? 'Fonte e data' : 'Source and date'}</dt>
+                        <dd>
+                          {benchmark.source} · {benchmark.date}
+                        </dd>
+                        {benchmark.notes && <dd>{benchmark.notes}</dd>}
+                        <dt>{language === 'it' ? 'Prezzo orario illustrativo' : 'Illustrative hourly price'}</dt>
+                        <dd>
+                          {formatCost(price.usdPerHour, language)}/h · {t.kind[price.kind]}
+                        </dd>
+                        <dd>
+                          {price.label} · {price.source} · {price.date}
+                        </dd>
+                        {price.notes && <dd>{price.notes}</dd>}
+                      </dl>
+                      <p className="mt-2">
+                        {language === 'it'
+                          ? 'Tempo = tentativi stimati / tentativi al secondo. Costo = tempo in ore × prezzo orario. Non è una misurazione locale.'
+                          : 'Time = estimated guesses / guesses per second. Cost = time in hours × hourly price. This is not a local measurement.'}
+                      </p>
+                    </details>
                   </td>
                 </tr>
               );

@@ -6,7 +6,19 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ## [Unreleased]
 
-Use this section only for changes already merged into `main` but not yet included in a tagged release.
+### Added
+
+- Bilingual expandable estimate provenance: algorithm parameters, hardware, dataset rate, sources/dates, hourly pricing and formulas, with scenario-aware regression tests.
+
+### Fixed
+
+- Restore reproducible installation by constraining TypeScript to the supported 6.0 series.
+- Clarify that scenarios keep the same guess rank and that local KDF benchmarking is still planned.
+
+### Italiano
+
+- Dettagli IT/EN delle stime con parametri, hardware, fonti, date, prezzi e formule.
+- Installazione riproducibile con TypeScript compatibile; documentazione allineata alle funzionalità disponibili.
 
 ## [0.1.0] - 2026-10-30
 

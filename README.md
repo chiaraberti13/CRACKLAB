@@ -121,3 +121,7 @@ notes extracted from the changelog. See [CHANGELOG.md](CHANGELOG.md) and [docs/R
 
 Released under the [GNU GPL-3.0 License](LICENSE). You may use, study, modify and redistribute the project while
 preserving the copyright and licence notice.
+
+## Estimate transparency
+
+Expand **Parameters and sources** beside each algorithm to inspect KDF configuration, hardware, assumed rate, provenance, date and hourly pricing. Details follow the selected scenario. Formulas are explicit; current data are assumptions, not measurements or predictions. Local KDF benchmarking and online simulations remain planned.
