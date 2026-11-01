@@ -34,6 +34,15 @@ export interface Catalog {
   algorithm: Record<Algorithm, string>;
   scenarios: Record<Scenario, { name: string; desc: string }>;
   examples: { id: string; label: string; value: string }[];
+  kdfLab: {
+    title: string;
+    intro: string;
+    run: string;
+    running: string;
+    failed: string;
+    limits: string;
+    factor: (n: string) => string;
+  };
 }
 
 const it: Catalog = {
@@ -95,7 +104,18 @@ const it: Catalog = {
     { id: 'weak', label: 'Debole', value: 'password123' },
     { id: 'word-numbers', label: 'Parola + numeri', value: 'Giulia2015!' },
     { id: 'passphrase', label: 'Passphrase', value: 'tavolo-brezza-quaranta-ruggine' }
-  ]
+  ],
+  kdfLab: {
+    title: 'Laboratorio sviluppatori: costo reale su questo dispositivo',
+    intro:
+      'Esegue davvero MD5, SHA-256, bcrypt (costo 12) e Argon2id (m=19MiB, t=2, p=1) in un Web Worker, su una stringa sintetica fissa: la password inserita sopra non viene usata.',
+    run: 'Esegui il confronto reale',
+    running: 'Calcolo in corso…',
+    failed: 'Misurazione interrotta (tempo massimo o memoria insufficiente): resta valida la stima analitica.',
+    limits:
+      'Misura di una singola esecuzione su questo dispositivo, non la velocità di un attaccante con GPU dedicate: i valori dei tre scenari restano quelli del dataset.',
+    factor: (n) => `Il KDF più lento costa circa ${n}× l’hash veloce, per ogni tentativo.`
+  }
 };
 
 const en: Catalog = {
@@ -157,7 +177,18 @@ const en: Catalog = {
     { id: 'weak', label: 'Weak', value: 'password123' },
     { id: 'word-numbers', label: 'Word + numbers', value: 'Giulia2015!' },
     { id: 'passphrase', label: 'Passphrase', value: 'table-breeze-forty-rust' }
-  ]
+  ],
+  kdfLab: {
+    title: 'Developer lab: real cost on this device',
+    intro:
+      'Really runs MD5, SHA-256, bcrypt (cost 12) and Argon2id (m=19MiB, t=2, p=1) in a Web Worker on a fixed synthetic string: the password typed above is not used.',
+    run: 'Run the real comparison',
+    running: 'Computing…',
+    failed: 'Measurement stopped (timeout or not enough memory): the analytical estimate still applies.',
+    limits:
+      'A single-run measurement on this device, not the speed of an attacker with dedicated GPUs: the three scenarios still use the dataset values.',
+    factor: (n) => `The slowest KDF costs about ${n}× the fast hash, for every guess.`
+  }
 };
 
 export const catalogs: Record<Language, Catalog> = { it, en };

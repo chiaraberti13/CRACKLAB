@@ -589,7 +589,7 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 - [ ] Tre esempi precaricati + avviso "usa un esempio".
 - [ ] Confronto MD5 / SHA-256 / bcrypt / Argon2id su tre scenari, assunzioni a un tap.
 - [ ] **Clessidra del cracking** (unica animazione) + versione statica per reduced-motion.
-- [ ] Singolo hash reale in Web Worker con **guardrail** (timeout, limite memoria, fallback analitico).
+- [x] Singolo hash reale in Web Worker con **guardrail** (timeout, limite memoria, fallback analitico). _Fatto: `src/sim/kdfBench.ts` + `kdf.worker.ts`, input sintetico, parametri limitati, timeout 8 s._
 - [ ] Lezione conclusiva + consiglio azionabile.
 - [ ] Input protetto (anti-autofill, nessuna persistenza, pulsante "svuota tutto").
 - [ ] i18n IT/EN, tema chiaro/scuro, tastiera.

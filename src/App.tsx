@@ -1,4 +1,5 @@
 import { useEffect, useId, useState } from 'react';
+import { LocalKdfLab } from './components/LocalKdfLab';
 import { StrengthMeter } from './components/StrengthMeter';
 import { useCatalog } from './i18n';
 import { SCENARIOS } from './model/types';
@@ -175,6 +176,8 @@ export default function App() {
             </>
           )}
         </div>
+
+        <LocalKdfLab language={language} />
 
         <section className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-stroke bg-surface p-4">

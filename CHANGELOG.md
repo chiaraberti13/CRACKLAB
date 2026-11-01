@@ -10,6 +10,8 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 - Bilingual expandable estimate provenance: algorithm parameters, hardware, dataset rate, sources/dates, hourly pricing and formulas, with scenario-aware regression tests.
 
+- Developer lab: MD5, SHA-256, bcrypt (cost 12) and Argon2id (m=19MiB, t=2, p=1) really run in a Web Worker on a fixed synthetic string (never the typed sample), with parameter clamping and an 8 s timeout; results are labelled measured (single run on this device) and derived (slowdown factor).
+
 ### Fixed
 
 - Restore reproducible installation by constraining TypeScript to the supported 6.0 series.
@@ -17,6 +19,7 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ### Italiano
 
+- Laboratorio sviluppatori: esecuzione reale di MD5, SHA-256, bcrypt e Argon2id in un Web Worker su stringa sintetica, con limiti di parametri e timeout; risultati etichettati misurato/derivato.
 - Dettagli IT/EN delle stime con parametri, hardware, fonti, date, prezzi e formule.
 - Installazione riproducibile con TypeScript compatibile; documentazione allineata alle funzionalità disponibili.
 
