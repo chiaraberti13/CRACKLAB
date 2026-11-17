@@ -91,3 +91,13 @@ npm run test:e2e   # privacy, app-shell e accessibilità axe sulla build di prod
 
 Descrivi cosa cambia, perché, come è stato testato e i confini di sicurezza interessati. Si applica
 `CODE_OF_CONDUCT.md`. La Definition of Done del template PR elenca cosa verificare.
+
+## Segnalazioni e verifica dei contributi
+
+Simulatore locale del costo degli attacchi alle credenziali e dell'effetto delle difese.
+
+Usa i [modelli di segnalazione](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose) per bug, miglioramenti e barriere di accessibilità. Prima di aprire una nuova segnalazione verifica se ne esiste già una equivalente. Contesto utile: Browser, scenario, parametri di simulazione e password esclusivamente inventata.
+
+Per le modifiche, compila il modello di pull request e indica verifiche eseguite, esito e verifiche non eseguite con il motivo. Mantieni le istruzioni specifiche di questo progetto e la parità delle lingue già disponibili. Non allegare dati di produzione, credenziali o dati personali; usa esempi sintetici.
+
+Consulta [il codice di condotta](CODE_OF_CONDUCT.md), [la policy di sicurezza](SECURITY.md) e [le indicazioni di accessibilità](docs/ACCESSIBILITY.md). Le vulnerabilità seguono esclusivamente il percorso descritto nella policy di sicurezza.

@@ -118,3 +118,12 @@ mantenendo l'avviso di copyright e licenza.
 ## Trasparenza delle stime
 
 Espandi **Parametri e fonti** accanto a ogni algoritmo per consultare configurazione KDF, hardware, velocità ipotizzata, provenienza, data e tariffa oraria. I dettagli seguono lo scenario selezionato. Le formule sono esplicite; i dati attuali sono ipotesi, non misurazioni né previsioni. Il benchmark KDF locale e le simulazioni online restano pianificati.
+
+## Comunità e collaborazione
+
+- [Come contribuire](CONTRIBUTING.md)
+- [Codice di condotta](CODE_OF_CONDUCT.md)
+- [Segnalazioni di sicurezza](SECURITY.md)
+- [Accessibilità e limiti delle verifiche](docs/ACCESSIBILITY.md)
+- [Segnalare un problema o proporre un miglioramento](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose)
+- [Licenza del progetto](LICENSE)
