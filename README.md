@@ -126,11 +126,11 @@ preserving the copyright and licence notice.
 
 Expand **Parameters and sources** beside each algorithm to inspect KDF configuration, hardware, assumed rate, provenance, date and hourly pricing. Details follow the selected scenario. Formulas are explicit; current data are assumptions, not measurements or predictions. Local KDF benchmarking and online simulations remain planned.
 
-## Comunità e collaborazione
+## Community and collaboration
 
-- [Come contribuire](CONTRIBUTING.md)
-- [Codice di condotta](CODE_OF_CONDUCT.md)
-- [Segnalazioni di sicurezza](SECURITY.md)
-- [Accessibilità e limiti delle verifiche](docs/ACCESSIBILITY.md)
-- [Segnalare un problema o proporre un miglioramento](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose)
-- [Licenza del progetto](LICENSE)
+- [Contributing](CONTRIBUTING.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Security reports](SECURITY.md)
+- [Accessibility and verification limits](docs/ACCESSIBILITY.md)
+- [Report a problem or propose an improvement](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose)
+- [Project license](LICENSE)

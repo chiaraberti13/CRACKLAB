@@ -1,21 +1,17 @@
 # Contributing to CrackLab
 
-<p align="center"><a href="#english">🇬🇧 English</a> · <a href="#italiano">🇮🇹 Italiano</a></p>
-
-## English
-
 CrackLab is a bilingual, client-side React/TypeScript credential-attack simulator with deterministic logic
 and a transparent, contestable estimation model. Four constraints are non-negotiable: **no-cracker**,
 **verifiable privacy**, **honest estimates**, and **design system + accessibility AA**.
 
-### Before you start
+## Before you start
 
 1. Read `README.md`, `SECURITY.md`, `docs/PRIVACY.md`, `docs/MODEL.md` and the `ROADMAP.md`.
 2. Search existing issues and keep each pull request focused.
 3. Never commit a real password, personal data, secrets or a full hash — use invented examples.
 4. Report vulnerabilities privately (see `SECURITY.md`).
 
-### Setup
+## Setup
 
 Use a supported Node.js release from `package.json#engines`. Commands are identical in Windows PowerShell,
 macOS Terminal and Linux shells:
@@ -25,14 +21,14 @@ npm ci
 npm run dev
 ```
 
-### Required checks
+## Required checks
 
 ```bash
 npm run verify     # lockfile, model data, deployment security, format, types, lint, tests+coverage, build, budget
 npm run test:e2e   # privacy, app-shell and axe accessibility on the production build
 ```
 
-### Engineering expectations
+## Engineering expectations
 
 - **No-cracker:** never add third-party hash input, wordlist cracking or a "break this hash" feature.
 - **Privacy:** no network access and no persistence of the sample; keep the Playwright privacy test green.
@@ -42,62 +38,15 @@ npm run test:e2e   # privacy, app-shell and axe accessibility on the production 
 - **Accessibility:** keyboard access, visible focus, contrast and `prefers-reduced-motion`; axe stays green.
 - Keep Italian and English content semantically equivalent and update the typed i18n catalogs together.
 
-### Pull requests
+## Pull requests
 
 Describe what changed, why, how it was tested, and the security boundaries affected. Participation follows
 `CODE_OF_CONDUCT.md`. The PR template's Definition of Done lists what to confirm.
 
-## Italiano
+## Reporting and contribution checks
 
-CrackLab è un simulatore bilingue di attacchi alle credenziali, lato client, in React/TypeScript, con logica
-deterministica e un modello di stima trasparente e contestabile. Quattro vincoli non negoziabili: **no-cracker**,
-**privacy verificabile**, **onestà delle stime**, **design system + accessibilità AA**.
+Use the [issue templates](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose) and check for duplicates first. Useful context: Browser, scenario, simulation parameters and an invented example password.
 
-### Prima di iniziare
+Write community and technical documentation in English; maintain equivalent English and Italian READMEs. Preserve existing application translations. Fill in the pull request template with commands, results and checks not performed, including the reason. Use synthetic examples without secrets or personal data.
 
-1. Leggi `README.md`, `SECURITY.md`, `docs/PRIVACY.md`, `docs/MODEL.md` e la `ROADMAP.md`.
-2. Controlla le issue esistenti e mantieni ogni pull request focalizzata.
-3. Non committare mai una password reale, dati personali, segreti o un hash completo — usa esempi inventati.
-4. Segnala privatamente le vulnerabilità (vedi `SECURITY.md`).
-
-### Setup
-
-Usa una versione Node.js supportata da `package.json#engines`. I comandi sono identici in Windows PowerShell,
-Terminale macOS e shell Linux:
-
-```bash
-npm ci
-npm run dev
-```
-
-### Controlli richiesti
-
-```bash
-npm run verify     # lockfile, dati del modello, sicurezza del deploy, format, tipi, lint, test+coverage, build, budget
-npm run test:e2e   # privacy, app-shell e accessibilità axe sulla build di produzione
-```
-
-### Aspettative tecniche
-
-- **No-cracker:** mai aggiungere input di hash di terzi, wordlist-cracking o una funzione "buca questo hash".
-- **Privacy:** nessuna richiesta di rete e nessuna persistenza dell'input; mantieni verde il test di privacy Playwright.
-- **Onestà delle stime:** ordini di grandezza, assunzioni sempre visibili, ogni numero etichettato
-  `misurato` / `derivato` / `ipotesi`, mai un'ipotesi presentata come misura. Modifiche a benchmark e prezzi
-  mantengono `source`, `date` e `kind` e passano `npm run verify:model`.
-- **Accessibilità:** tastiera, focus visibile, contrasto e `prefers-reduced-motion`; axe resta verde.
-- Mantieni equivalenti i contenuti italiani e inglesi e aggiorna insieme i cataloghi i18n tipizzati.
-
-### Pull request
-
-Descrivi cosa cambia, perché, come è stato testato e i confini di sicurezza interessati. Si applica
-`CODE_OF_CONDUCT.md`. La Definition of Done del template PR elenca cosa verificare.
-
-## Segnalazioni e verifica dei contributi
-
-Simulatore locale del costo degli attacchi alle credenziali e dell'effetto delle difese.
-
-Usa i [modelli di segnalazione](https://github.com/chiaraberti13/CRACKLAB/issues/new/choose) per bug, miglioramenti e barriere di accessibilità. Prima di aprire una nuova segnalazione verifica se ne esiste già una equivalente. Contesto utile: Browser, scenario, parametri di simulazione e password esclusivamente inventata.
-
-Per le modifiche, compila il modello di pull request e indica verifiche eseguite, esito e verifiche non eseguite con il motivo. Mantieni le istruzioni specifiche di questo progetto e la parità delle lingue già disponibili. Non allegare dati di produzione, credenziali o dati personali; usa esempi sintetici.
-
-Consulta [il codice di condotta](CODE_OF_CONDUCT.md), [la policy di sicurezza](SECURITY.md) e [le indicazioni di accessibilità](docs/ACCESSIBILITY.md). Le vulnerabilità seguono esclusivamente il percorso descritto nella policy di sicurezza.
+See [the code of conduct](CODE_OF_CONDUCT.md), [security policy](SECURITY.md) and [accessibility statement](docs/ACCESSIBILITY.md). Report vulnerabilities only through the security policy process.
