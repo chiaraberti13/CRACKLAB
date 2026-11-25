@@ -41,6 +41,28 @@ Non è un cracker, per scelta architetturale: nessun input di hash di terzi, nes
 
 Consulta la [roadmap](ROADMAP.md) per le fasi "Capisci" (scenari guidati) e "Progetta" (laboratorio sviluppatori).
 
+## 🗺️ Diagramma dell’architettura
+
+```mermaid
+flowchart TD
+    accTitle: Architettura di CRACKLAB
+    accDescr: La stima di robustezza usa l’esempio inserito nel browser. Il laboratorio dei tempi usa una stringa sintetica fissa e misura le prestazioni del dispositivo locale.
+    sample["Esempio inventato"] --> z["zxcvbn-ts"]
+    z --> guesses["Tentativi stimati"]
+    guesses --> model["Modello di stima"]
+    scenario["Ipotesi dello scenario"] --> model
+    model --> range["Tempo e costo stimati"]
+    fixed["Stringa sintetica fissa"] --> worker["Worker KDF locale"]
+    worker --> measured["Tempi misurati sul dispositivo"]
+
+    classDef core fill:#23313a,stroke:#7193a7,color:#f4f7f8;
+    classDef output fill:#2b3035,stroke:#8b959e,color:#f4f7f8;
+    class z,model,worker core;
+    class range,measured output;
+```
+
+La stima di robustezza usa l’esempio inserito nel browser. Il laboratorio dei tempi usa una stringa sintetica fissa e misura le prestazioni del dispositivo locale.
+
 ## Il modello di stima
 
 Il modello è il cuore contestabile e trasparente del progetto. Per ogni _esempio × algoritmo × scenario_:

@@ -41,6 +41,28 @@ It is deliberately **not a cracker**: there is no input for third-party hashes, 
 
 See the [roadmap](ROADMAP.md) for the "Capisci" (guided scenarios) and "Progetta" (developer lab) phases.
 
+## 🗺️ Architecture Diagram
+
+```mermaid
+flowchart TD
+    accTitle: Architecture of CRACKLAB
+    accDescr: The strength estimate uses the example entered in the browser. The separate timing lab runs on a fixed synthetic string, so its measurements describe the local device.
+    sample["Invented example"] --> z["zxcvbn-ts"]
+    z --> guesses["Estimated guesses"]
+    guesses --> model["Estimation model"]
+    scenario["Scenario assumptions"] --> model
+    model --> range["Estimated time and cost"]
+    fixed["Fixed synthetic string"] --> worker["Local KDF worker"]
+    worker --> measured["Measured local timings"]
+
+    classDef core fill:#23313a,stroke:#7193a7,color:#f4f7f8;
+    classDef output fill:#2b3035,stroke:#8b959e,color:#f4f7f8;
+    class z,model,worker core;
+    class range,measured output;
+```
+
+The strength estimate uses the example entered in the browser. The separate timing lab runs on a fixed synthetic string, so its measurements describe the local device.
+
 ## The estimation model
 
 The model is the trust-critical, contestable core. For each _example × algorithm × scenario_:
