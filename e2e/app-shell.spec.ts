@@ -38,6 +38,7 @@ test('benchmark details follow the scenario and work on a narrow viewport', asyn
 
 test('the developer lab really runs the KDFs locally on a synthetic input', async ({ page }) => {
   await page.goto('/');
+  await page.getByRole('link', { name: 'Progetta' }).click();
   await page.getByRole('button', { name: /esegui il confronto reale|run the real comparison/i }).click();
   await expect(page.getByText(/il kdf più lento costa|slowest kdf costs/i)).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText(/Argon2id: /)).toBeVisible();

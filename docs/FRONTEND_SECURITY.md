@@ -25,3 +25,7 @@ Worker with a timeout, a memory cap, and an analytic fallback (Fase 1).
 ## No third parties
 
 All assets and fonts are self-hosted; the first screen loads no external script or stylesheet.
+
+## Optional HIBP lookup
+
+The production CSP on the dedicated worker script `/hibp/range-worker.js` allows only the Pwned Passwords origin for network connections. Documents keep the same-origin connection policy. The worker validates the five-hex-digit prefix. Only static application resources are eligible for offline caching.

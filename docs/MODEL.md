@@ -46,7 +46,7 @@ meant to be replaced by measured benchmarks via PR. See `src/model/data/README.m
 
 ### Honesty rules
 
-Costs are illustrative (cloud prices vary by time, region and availability). A future in-browser KDF benchmark will answer
+Costs are illustrative (cloud prices vary by time, region and availability). The in-browser KDF benchmark answers
 "how expensive is one verification _here_?" and is never auto-converted into an attacker-performance prediction.
 
 ## Italiano
@@ -83,5 +83,5 @@ Monotonie attese, property-based (`fast-check`), presenza di `source`/`date`/`ki
 
 ### Regole di onestà
 
-I costi sono illustrativi; il benchmark KDF nel browser, ancora pianificato, risponderà a "quanto costa una verifica _qui_?" e non diventa
+I costi sono illustrativi; il benchmark KDF nel browser risponde a "quanto costa una verifica _qui_?" e non diventa
 mai automaticamente una previsione sulle prestazioni dell'attaccante.

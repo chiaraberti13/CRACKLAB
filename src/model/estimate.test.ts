@@ -94,3 +94,11 @@ describe('estimate across algorithms (expected monotonicity)', () => {
     expect(['measured', 'derived', 'assumption']).toContain(e.priceKind);
   });
 });
+
+it('reports overflow and underflow without displaying zero or infinity', () => {
+  expect(() => estimateSeconds(Number.MAX_VALUE, 0.01)).toThrow(RangeError);
+  expect(() => estimateSeconds(Number.MIN_VALUE, 10)).toThrow(RangeError);
+  expect(() => estimateCostUsd(Number.MAX_VALUE, Number.MAX_VALUE)).toThrow(RangeError);
+  expect(() => estimateCostUsd(Number.MIN_VALUE, 1)).toThrow(RangeError);
+  expect(estimateCostUsd(Number.MIN_VALUE, 3600)).toBe(Number.MIN_VALUE);
+});

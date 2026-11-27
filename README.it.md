@@ -39,7 +39,7 @@ Non è un cracker, per scelta architetturale: nessun input di hash di terzi, nes
 - **Una lezione e un'azione concrete** (password manager, passphrase generata, MFA).
 - Bilingue **IT/EN**, tastiera completa, `prefers-reduced-motion` e avviso permanente "usa un esempio" — fin dal primo giorno.
 
-Consulta la [roadmap](ROADMAP.md) per le fasi "Capisci" (scenari guidati) e "Progetta" (laboratorio sviluppatori).
+**Capisci** propone quattro esperimenti con previsione, difesa modificabile, quiz e scheda scaricabile. **Progetta** misura un input sintetico con parametri KDF regolabili ed esporta i risultati locali. Include anche un laboratorio di policy, un generatore di passphrase e una dimostrazione delle precomputazioni. La verifica facoltativa Pwned Passwords ha una pagina di consenso separata. Dopo la prima installazione online, i percorsi didattici funzionano offline. Vedi i [criteri di chiusura](ROADMAP.md).
 
 ## 🗺️ Diagramma dell’architettura
 
@@ -139,7 +139,7 @@ mantenendo l'avviso di copyright e licenza.
 
 ## Trasparenza delle stime
 
-Espandi **Parametri e fonti** accanto a ogni algoritmo per consultare configurazione KDF, hardware, velocità ipotizzata, provenienza, data e tariffa oraria. I dettagli seguono lo scenario selezionato. Le formule sono esplicite; i dati attuali sono ipotesi, non misurazioni né previsioni. Il benchmark KDF locale e le simulazioni online restano pianificati.
+Espandi **Parametri e fonti** accanto a ogni algoritmo per consultare configurazione KDF, hardware, velocità ipotizzata, provenienza, data e tariffa oraria. I dettagli seguono lo scenario selezionato. Le formule sono esplicite; i dati attuali sono ipotesi, non misurazioni né previsioni.
 
 ## Comunità e collaborazione
 

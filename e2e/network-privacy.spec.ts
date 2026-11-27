@@ -14,7 +14,7 @@ test('no password data leaves the browser while typing and evaluating', async ({
 
   page.on('request', (request) => {
     const url = request.url();
-    if (!url.startsWith(origin) && !url.startsWith('data:') && !url.startsWith('blob:')) {
+    if (new URL(url).origin !== origin && !url.startsWith('data:') && !url.startsWith('blob:')) {
       offOrigin.push(url);
     }
     const body = request.postData() ?? '';

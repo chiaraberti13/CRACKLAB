@@ -18,8 +18,7 @@ The password never leaves the device. CrackLab treats this as a requirement to *
 - **No secure-erasure claim.** In JavaScript, strings are immutable and their removal depends on the garbage
   collector; "clear all" resets state but we do not promise secure memory erasure, and we say so.
 
-A future opt-in HIBP range check (Fase 3) would be the only outbound request, k-anonymity + padding, disabled by
-default, and would require a reviewed entry in `.github/security-exceptions.yml` and a CSP `connect-src` addition.
+The optional check at `/hibp/` requires a new example, consent and an explicit submission. Only its dedicated worker can contact Pwned Passwords. It sends a five-digit SHA-1 hex prefix with padding requested and no credentials. The service sees the prefix and network metadata. Responses and typed values are never cached. The offline service worker caches only build-time application assets.
 
 ## Italiano
 
@@ -37,5 +36,4 @@ La password non lascia il dispositivo. CrackLab lo tratta come un requisito da *
 - **Nessuna promessa di cancellazione sicura.** In JavaScript le stringhe sono immutabili e la loro rimozione
   dipende dal garbage collector; "svuota tutto" azzera lo stato ma non promettiamo la cancellazione sicura della memoria.
 
-Un futuro controllo HIBP opzionale (Fase 3) sarebbe l'unica richiesta in uscita, con k-anonymity + padding,
-disattivato di default, e richiederebbe una voce rivista in `.github/security-exceptions.yml` e un'aggiunta a `connect-src`.
+La pagina facoltativa `/hibp/` richiede un nuovo esempio, il consenso e un invio esplicito. Il worker dedicato invia al servizio soltanto il prefisso SHA-1 di cinque cifre esadecimali, con padding e senza credenziali. Il servizio vede il prefisso e i metadati di rete. La cache offline contiene esclusivamente file statici della build. I test della richiesta usano risposte simulate.

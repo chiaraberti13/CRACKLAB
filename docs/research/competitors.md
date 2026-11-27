@@ -1,29 +1,16 @@
-# Competitor and positioning analysis (Fase 0)
+# Confronto di otto strumenti e metodi
 
-Roadmap task: analyse 8–10 similar tools to confirm or revise CrackLab's positioning hypothesis.
+Ricognizione delle interfacce pubbliche e della documentazione, 27 novembre 2026. Le osservazioni descrivono ciò che ciascuna fonte presenta. La verifica di accessibilità e traffico di rete riguarda soltanto CrackLab.
 
-> **Hypothesis to verify:** existing tools return a weak/strong verdict and rarely show **attacker and defender side
-> by side** with explicit assumptions. CrackLab's differentiator is the honest, assumption-visible model plus the
-> attack/defense framing.
+| Strumento                                                                            | Cosa può osservare l’utente                                        | Conseguenza per CrackLab                                                             |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| [Bitwarden Password Strength Testing Tool](https://bitwarden.com/password-strength/) | Valutazione di un esempio e indicazioni per scegliere password.    | Affiancare al giudizio la configurazione di conservazione.                           |
+| [Security.org](https://www.security.org/how-secure-is-my-password/)                  | Tempo di scoperta stimato in primo piano.                          | Dare accesso a fonte, data e ipotesi dalla stessa riga del risultato.                |
+| [PasswordMonster](https://www.passwordmonster.com/)                                  | Contatori di classi di caratteri e tempo stimato.                  | Mostrare perché una sostituzione prevedibile può superare le regole di composizione. |
+| [Pwned Passwords](https://haveibeenpwned.com/Passwords)                              | Presenza di un campione in un corpus di credenziali compromesse.   | Distinguere corrispondenza nel corpus e prevedibilità.                               |
+| [Use A Passphrase](https://www.useapassphrase.com/)                                  | Generazione di frasi e tempo approssimativo.                       | Esporre numero di parole, dimensione della lista e modalità di estrazione.           |
+| [NordPass](https://nordpass.com/secure-password/)                                    | Controllo della robustezza e indicazioni per l’utente.             | Offrire un passo successivo concreto dopo la prova.                                  |
+| [Dropbox zxcvbn](https://github.com/dropbox/zxcvbn)                                  | Pattern, tentativi stimati e tempi per diversi scenari.            | L’analisi per scenari esiste già. Documentare le ipotesi e far variare le difese.    |
+| [EFF Dice](https://www.eff.org/dice)                                                 | Procedura riproducibile di estrazione con dadi e liste pubblicate. | Distinguere lo spazio teorico delle estrazioni uniformi dalla stima su testo umano.  |
 
-This is a template to fill in before the public launch. For each tool record:
-
-| Field                       | Notes                                                                                |
-| --------------------------- | ------------------------------------------------------------------------------------ |
-| Name / URL                  |                                                                                      |
-| Category                    | strength meter · time-to-crack estimator · password manager feature · awareness demo |
-| Shows attacker vs defender? | yes / partial / no                                                                   |
-| Assumptions visible?        | hardware, algorithm, dictionary strategy — shown / hidden                            |
-| Estimate honesty            | order of magnitude vs single number; entropy vs guesses                              |
-| Privacy                     | client-side? any network calls while typing?                                         |
-| Accessibility               | keyboard, contrast, reduced-motion                                                   |
-| Takeaway for CrackLab       | what to match, what to differentiate                                                 |
-
-## Tools to review (initial list)
-
-1. _(to fill)_
-2. _(to fill)_
-
-## Conclusion
-
-_Pending — confirm or revise the positioning hypothesis and link the decision from the README/ROADMAP._
+L’ipotesi iniziale va ridimensionata. Il confronto tra scenari ha precedenti. La scelta di prodotto è far formulare una previsione, cambiare una difesa e osservare l’esito, con provenienza dei dati e limiti sempre consultabili. Il valore per utenti non tecnici resta una domanda per le prove di usabilità.

@@ -27,5 +27,6 @@ Scope: a static, client-side SPA with no backend. The asset to protect is the **
 
 ## Out of scope
 
-Denial of service, attacks on the hosting provider, and a compromised end-user device. A future opt-in HIBP check
-(Fase 3) adds one carefully scoped outbound request documented in `docs/PRIVACY.md`.
+Denial of service, attacks on the hosting provider, and a compromised end-user device.
+
+The opt-in range service learns a five-digit prefix and network metadata. Its dedicated worker has a separate CSP. See `docs/PRIVACY.md` for the consent boundary.

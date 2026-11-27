@@ -63,3 +63,107 @@ body {
     transition-duration: 0.001ms !important;
   }
 }
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-canvas: #f6f7fa;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #eef1f5;
+  --color-stroke: #8993a5;
+  --color-stroke-strong: #626c7c;
+  --color-ink-primary: #172233;
+  --color-ink-secondary: #374556;
+  --color-ink-muted: #505c6e;
+  --color-attack: #9e293a;
+  --color-attack-soft: #fff0f2;
+  --color-defense: #744c09;
+  --color-defense-soft: #fff4d8;
+  --color-accent: #215a9f;
+  --color-accent-soft: #eaf1fc;
+  --color-assumption: #495569;
+  --color-assumption-soft: #eef1f5;
+  --color-code-bg: #fff;
+  --color-code-ink: #18222f;
+}
+.path-link {
+  color: var(--color-accent);
+  padding: 0.4rem 0.1rem;
+}
+.path-link[aria-current='page'] {
+  border-bottom: 2px solid currentColor;
+  font-weight: 700;
+}
+.panel {
+  margin-top: 1.25rem;
+  border: 1px solid var(--color-stroke);
+  background: var(--color-surface);
+  padding: 1.25rem;
+  border-radius: 0.8rem;
+}
+.panel h2 {
+  font-size: 1.25rem;
+  font-weight: 650;
+  margin-bottom: 0.6rem;
+}
+.panel p,
+.panel fieldset,
+.panel details,
+.panel label {
+  margin-block: 0.75rem;
+}
+.panel button,
+.panel select,
+.action {
+  border: 1px solid var(--color-stroke-strong);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  background: var(--color-surface);
+  color: var(--color-ink-primary);
+}
+.panel a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+.panel button[aria-pressed='true'] {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+.sand {
+  width: 1.1rem;
+  height: 1.3rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 60% 49%, 100% 100%, 0 100%, 40% 49%);
+  animation: turn-glass var(--duration, 1s) ease-in-out 2;
+}
+@keyframes turn-glass {
+  0%,
+  25% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sand,
+  .scene-step {
+    animation: none !important;
+  }
+}
+.scene-step {
+  animation: reveal 0.35s ease-out both;
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

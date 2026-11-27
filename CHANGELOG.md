@@ -8,6 +8,10 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ### Added
 
+- Guided learning paths, optional quizzes and fixed-content teaching cards in Italian and English.
+- Configurable KDF measurements, synthetic-only reports, policy and passphrase experiments, an offline bundle and a separately consented padded breach lookup.
+- Immediate invalidation of previous estimates, bounded sample length and explicit handling of numeric range errors.
+
 - Bilingual expandable estimate provenance: algorithm parameters, hardware, dataset rate, sources/dates, hourly pricing and formulas, with scenario-aware regression tests.
 
 - Developer lab: MD5, SHA-256, bcrypt (cost 12) and Argon2id (m=19MiB, t=2, p=1) really run in a Web Worker on a fixed synthetic string (never the typed sample), with parameter clamping and an 8 s timeout; results are labelled measured (single run on this device) and derived (slowdown factor).

@@ -559,26 +559,26 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 
 **Ingegneria/DevOps**
 
-- [ ] Repo, licenza GPL-3.0, README/CONTRIBUTING, template issue/PR (incluso template "aggiorna benchmark").
-- [ ] Scaffolding React 19 / TS strict / Vite / Tailwind / Zustand / Motion.
-- [ ] CI (lint, type, test, build, axe, audit) + **branch protection su `main`** + Conventional Commits.
-- [ ] **Vercel**: production su `main` + preview per PR + header di sicurezza.
-- [ ] **Test di rete per la privacy** (Playwright) attivi da subito.
+- [x] Repo, licenza GPL-3.0, README/CONTRIBUTING, template issue/PR (incluso template "aggiorna benchmark").
+- [x] Scaffolding React 19 / TS strict / Vite / Tailwind / Zustand / Motion.
+- [~] CI (lint, type, test, build, axe, audit) + **branch protection su `main`** + Conventional Commits.
+- [~] **Vercel**: production su `main` + preview per PR + header di sicurezza.
+- [x] **Test di rete per la privacy** (Playwright) attivi da subito.
 
 **Modello**
 
-- [ ] `src/model/data/benchmarks.json` con fonte, data, `kind` (measured/derived/assumption).
-- [ ] `src/model/data/pricing.json` con prezzi datati.
-- [ ] Formule: tentativi stimati → tempo → costo; tre scenari dichiarati.
-- [ ] Test: monotonie, presenza di fonti/date/`kind`, avviso benchmark vecchi, property-based.
+- [x] `src/model/data/benchmarks.json` con fonte, data, `kind` (measured/derived/assumption).
+- [x] `src/model/data/pricing.json` con prezzi datati.
+- [x] Formule: tentativi stimati → tempo → costo; tre scenari dichiarati.
+- [x] Test: monotonie, presenza di fonti/date/`kind`, avviso benchmark vecchi, property-based.
 
 **Ricerca**
 
-- [ ] Analisi di 8–10 strumenti simili → conferma o revisione dell'ipotesi di posizionamento.
+- [x] Analisi di 8–10 strumenti simili → conferma o revisione dell'ipotesi di posizionamento.
 
 **Core**
 
-- [ ] Integrazione `@zxcvbn-ts/core` + dizionari IT/EN on-demand → `StrengthMeter`.
+- [x] Integrazione `@zxcvbn-ts/core` + dizionari IT/EN on-demand → `StrengthMeter`.
 
 **Exit gate:** una PR apre un preview; i test del modello e di rete passano; merge su `main` → produzione.
 
@@ -586,14 +586,14 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 
 **Obiettivo:** un esperimento che convince in 30 secondi, accessibile e onesto.
 
-- [ ] Tre esempi precaricati + avviso "usa un esempio".
-- [ ] Confronto MD5 / SHA-256 / bcrypt / Argon2id su tre scenari, assunzioni a un tap.
-- [ ] **Clessidra del cracking** (unica animazione) + versione statica per reduced-motion.
+- [x] Tre esempi precaricati + avviso "usa un esempio".
+- [x] Confronto MD5 / SHA-256 / bcrypt / Argon2id su tre scenari, assunzioni a un tap.
+- [x] **Clessidra del cracking** (unica animazione) + versione statica per reduced-motion.
 - [x] Singolo hash reale in Web Worker con **guardrail** (timeout, limite memoria, fallback analitico). _Fatto: `src/sim/kdfBench.ts` + `kdf.worker.ts`, input sintetico, parametri limitati, timeout 8 s._
-- [ ] Lezione conclusiva + consiglio azionabile.
-- [ ] Input protetto (anti-autofill, nessuna persistenza, pulsante "svuota tutto").
-- [ ] i18n IT/EN, tema chiaro/scuro, tastiera.
-- [ ] Coverage `model`/`sim` ≥ 80%; e2e (esempio → confronto atteso); axe.
+- [x] Lezione conclusiva + consiglio azionabile.
+- [x] Input protetto (anti-autofill, nessuna persistenza, pulsante "svuota tutto").
+- [x] i18n IT/EN, tema chiaro/scuro, tastiera.
+- [x] Coverage `model`/`sim` ≥ 80%; e2e (esempio → confronto atteso); axe.
 - [ ] **Test di usabilità** con 5–8 persone non tecniche.
 
 **Exit gate:** a11y AA; test di rete verdi; ipotesi "capisce in ~10 s" verificata o testi rivisti in base ai risultati.
@@ -604,41 +604,41 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 
 **Simulazione**
 
-- [ ] Motore **offline**: dictionary, mask, brute force su spazio ridotto; effetto di salt e KDF lento.
-- [ ] Motore **online**: dictionary/stuffing/**spraying** contro rate limit, lockout, MFA, rilevamento spray, delay progressivo — con i **quattro esiti** distinti.
+- [~] Motore **offline**: dictionary, mask, brute force su spazio ridotto; effetto di salt e KDF lento.
+- [~] Motore **online**: dictionary/stuffing/**spraying** contro rate limit, lockout, MFA, rilevamento spray, delay progressivo — con i **quattro esiti** distinti.
 
 **Scenari "Capisci"** (struttura domanda → previsione → simulazione → spiegazione → limite → difesa)
 
-- [ ] Stessa password su due account.
-- [ ] Il salt basta?
-- [ ] Il lockout ferma lo spraying?
-- [ ] Password scoperta + MFA.
-- [ ] Mini-quiz opzionale di comprensione a fine scenario.
+- [x] Stessa password su due account.
+- [x] Il salt basta?
+- [x] Il lockout ferma lo spraying?
+- [x] Password scoperta + MFA.
+- [x] Mini-quiz opzionale di comprensione a fine scenario.
 
 **Motion/Design**
 
-- [ ] Scena **Attaccante vs Difensore** + versione statica equivalente.
-- [ ] **Share card didattiche** (solo scenari predefiniti, nessun dato della password).
+- [x] Scena **Attaccante vs Difensore** + versione statica equivalente.
+- [x] **Share card didattiche** (solo scenari predefiniti, nessun dato della password).
 
 **"Progetta"**
 
-- [ ] Scelta KDF e parametri, benchmark locale, slider sicurezza offline / costo server.
-- [ ] Raccomandazioni OWASP come punto di partenza, con trade-off spiegati.
-- [ ] Mini-report esportabile senza dati della password.
+- [x] Scelta KDF e parametri, benchmark locale, slider sicurezza offline / costo server.
+- [x] Raccomandazioni OWASP come punto di partenza, con trade-off spiegati.
+- [x] Mini-report esportabile senza dati della password.
 
 **Crescita**
 
-- [ ] README con GIF; 2–3 articoli; pagine-intento SEO (una per scenario); clip social.
+- [~] README con GIF; 2–3 articoli; pagine-intento SEO (una per scenario); clip social.
 
 **Exit gate:** Lighthouse Perf/A11y ≥ 90; animazioni accessibili; simulazioni testate; revisione esterna del modello; nessun blocker privacy/etica; v1.0 taggata (SemVer) + changelog.
 
 ### 🟩 Fase 3 — Crescita (continua · P2/P3)
 
-- [ ] Demo concettuale stilizzata delle **rainbow table**.
-- [ ] Generatore di passphrase (diceware) con stima dei tentativi.
-- [ ] **Policy builder**.
-- [ ] **HIBP k-anonymity opzionale** con padding, disattivato di default.
-- [ ] **PWA offline**.
+- [x] Demo concettuale stilizzata delle **rainbow table**.
+- [x] Generatore di passphrase (diceware) con stima dei tentativi.
+- [x] **Policy builder**.
+- [x] **HIBP k-anonymity opzionale** con padding, disattivato di default.
+- [x] **PWA offline**.
 - [ ] Aggiornamento periodico di benchmark e prezzi (almeno annuale).
 - [ ] Iterazioni guidate dalle metriche di comprensione.
 
@@ -673,8 +673,22 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 - [x] Dettagli IT/EN delle stime: parametri, hardware, fonte, data, velocità, provenienza del prezzo e formule; selezione coerente con lo scenario.
 - [x] Compatibilità TypeScript con typescript-eslint ripristinata (6.0.3, lockfile aggiornato senza bypass dei peer).
 - [x] Documentazione del modello corretta: rango invariato fra scenari; benchmark KDF locale ancora pianificato.
-- [ ] Invalidazione dei risultati durante il ricalcolo, gestione errori e limite input.
-- [ ] Gestione esplicita degli estremi numerici non rappresentabili.
-- [ ] Laboratorio KDF reale con worker e limiti di risorse, prima di dichiararlo disponibile.
+- [x] Invalidazione dei risultati durante il ricalcolo, gestione errori e limite input.
+- [x] Gestione esplicita degli estremi numerici non rappresentabili.
+- [x] Laboratorio KDF reale con worker e limiti di risorse, con misura locale su input sintetico.
 
-Questo incremento migliora la verificabilità del confronto esistente; non completa i laboratori delle fasi successive.
+Lo stato delle spunte include le verifiche successive del 27 novembre.
+
+## Verifica per criteri di chiusura · 27 novembre 2026
+
+| Criterio                | Evidenza                                                                                                                                                | Stato                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Prova e modello         | Confronto fra quattro algoritmi, tre profili, ipotesi espandibili, clessidre, cancellazione, dizionari IT/EN. Test numerici, proprietà e prova browser. | Verificato                                                                   |
+| Capisci                 | Quattro URL con domanda, previsione, confronto con/senza difesa, limite, indicazione pratica, quiz ed export predefinito.                               | Verificato su Chromium                                                       |
+| Progetta                | Scelta dell’algoritmo e dei parametri, worker con limiti, modello di concorrenza a memoria riservata, report su stringa sintetica.                      | Verificato su Chromium                                                       |
+| Privacy e offline       | Prova offline su percorso mai visitato e stima locale. Per HIBP il test intercetta il worker e controlla prefisso, padding e consenso.                  | Verificato in ambiente di test                                               |
+| Provenienza             | Dati versionati e classificati. I tassi e i prezzi attuali sono ipotesi illustrative. Il benchmark del dispositivo misura un altro fenomeno.            | Validazione dello schema superata; revisione scientifica indipendente aperta |
+| Ricerca di prodotto     | [Confronto di otto strumenti](docs/research/competitors.md).                                                                                            | Completato                                                                   |
+| Validazione con persone | 5–8 partecipanti non tecnici, tempi per trovare le assunzioni, comprensione, prova assistiva.                                                           | Mancano osservazioni dirette                                                 |
+| Pubblicazione           | Il ramo principale risultava privo di protezione. Produzione e preview richiedono riscontro sul deploy.                                                 | Verifica infrastrutturale distinta dai test locali                           |
+| Crescita                | Adozione, metriche longitudinali, manutenzione dei dataset.                                                                                             | Attività continuative                                                        |

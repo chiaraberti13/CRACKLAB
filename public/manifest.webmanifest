@@ -1,0 +1,10 @@
+{
+  "name": "CrackLab — laboratorio credenziali",
+  "short_name": "CrackLab",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0c0f17",
+  "background_color": "#0c0f17",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

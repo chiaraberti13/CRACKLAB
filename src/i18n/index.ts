@@ -108,7 +108,7 @@ const it: Catalog = {
   kdfLab: {
     title: 'Laboratorio sviluppatori: costo reale su questo dispositivo',
     intro:
-      'Esegue davvero MD5, SHA-256, bcrypt (costo 12) e Argon2id (m=19MiB, t=2, p=1) in un Web Worker, su una stringa sintetica fissa: la password inserita sopra non viene usata.',
+      'Esegue davvero MD5, SHA-256, bcrypt e Argon2id con i parametri selezionati in un Web Worker, su una stringa sintetica fissa: ogni misura usa lo stesso input.',
     run: 'Esegui il confronto reale',
     running: 'Calcolo in corso…',
     failed: 'Misurazione interrotta (tempo massimo o memoria insufficiente): resta valida la stima analitica.',
@@ -181,7 +181,7 @@ const en: Catalog = {
   kdfLab: {
     title: 'Developer lab: real cost on this device',
     intro:
-      'Really runs MD5, SHA-256, bcrypt (cost 12) and Argon2id (m=19MiB, t=2, p=1) in a Web Worker on a fixed synthetic string: the password typed above is not used.',
+      'Really runs MD5, SHA-256, bcrypt and Argon2id with the selected parameters in a Web Worker on a fixed synthetic string: every measurement uses the same input.',
     run: 'Run the real comparison',
     running: 'Computing…',
     failed: 'Measurement stopped (timeout or not enough memory): the analytical estimate still applies.',

@@ -1,4 +1,8 @@
 # Every scanner suppression must have a matching, reviewable entry here.
 # See docs/SECURITY_SCANNING.md for required fields and approval rules.
 version: 1
-exceptions: []
+exceptions:
+  - path: public/hibp/range-worker.js
+    owner: chiaraberti13
+    reason: Consent-gated padded range lookup with a five-character digest prefix.
+    expires: 2027-11-27

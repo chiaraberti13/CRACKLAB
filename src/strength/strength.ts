@@ -1,3 +1,4 @@
+import { MAX_SAMPLE_LENGTH } from './limits';
 import { ZxcvbnFactory } from '@zxcvbn-ts/core';
 
 /**
@@ -39,14 +40,19 @@ async function getFactory(): Promise<ZxcvbnFactory> {
         translations: en.translations
       });
       return factory;
-    })();
+    })().catch((error: unknown) => {
+      configuring = null;
+      throw error;
+    });
   }
   return configuring;
 }
 
 /** Estimate the predictability of a sample password. Local-only, no network. */
 export async function evaluateStrength(password: string): Promise<StrengthResult> {
+  if (password.length > MAX_SAMPLE_LENGTH) throw new RangeError('Sample too long');
   const instance = await getFactory();
   const result = instance.check(password);
+  if (!Number.isFinite(result.guesses) || result.guesses <= 0) throw new RangeError('Estimate outside numeric range');
   return { guesses: result.guesses, score: result.score };
 }

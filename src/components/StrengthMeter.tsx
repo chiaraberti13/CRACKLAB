@@ -72,6 +72,13 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
                   </th>
                   <td className="py-3 pr-3">
                     <span className={fast ? 'font-semibold text-attack' : 'font-semibold text-defense'}>
+                      <span
+                        className="sand"
+                        style={{
+                          animationDuration: (0.45 + Math.min(7, Math.max(0, Math.log10(1 + e.seconds)))) * 0.26 + 's'
+                        }}
+                        aria-hidden="true"
+                      />
                       {t.magnitude[magnitude]}
                     </span>
                   </td>

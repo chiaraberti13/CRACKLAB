@@ -39,7 +39,7 @@ It is deliberately **not a cracker**: there is no input for third-party hashes, 
 - **A single concrete lesson and action** (password manager, generated passphrase, MFA).
 - Bilingual **IT/EN**, full keyboard access, `prefers-reduced-motion`, and a permanent "use an example" warning — from day one.
 
-See the [roadmap](ROADMAP.md) for the "Capisci" (guided scenarios) and "Progetta" (developer lab) phases.
+**Learn** includes four guided experiments, predictions, defensive controls, a quiz and downloadable teaching cards. **Design** measures synthetic inputs with adjustable KDF parameters and exports local results. It also includes a policy builder, a random-passphrase experiment and a conceptual precomputation demo. The optional Pwned Passwords check uses a separate consent screen. After the first online installation the teaching paths work offline. See the [closure criteria](ROADMAP.md).
 
 ## 🗺️ Architecture Diagram
 
@@ -146,7 +146,7 @@ preserving the copyright and licence notice.
 
 ## Estimate transparency
 
-Expand **Parameters and sources** beside each algorithm to inspect KDF configuration, hardware, assumed rate, provenance, date and hourly pricing. Details follow the selected scenario. Formulas are explicit; current data are assumptions, not measurements or predictions. Local KDF benchmarking and online simulations remain planned.
+Expand **Parameters and sources** beside each algorithm to inspect KDF configuration, hardware, assumed rate, provenance, date and hourly pricing. Details follow the selected scenario. Formulas are explicit; current data are assumptions, not measurements or predictions.
 
 ## Community and collaboration
 

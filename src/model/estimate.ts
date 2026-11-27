@@ -42,7 +42,10 @@ export function estimateSeconds(guesses: number, hashesPerSecond: number): numbe
   if (hashesPerSecond === 0) {
     throw new RangeError('hashesPerSecond must be greater than zero.');
   }
-  return guesses / hashesPerSecond;
+  const seconds = guesses / hashesPerSecond;
+  if (!Number.isFinite(seconds) || (guesses > 0 && seconds === 0))
+    throw new RangeError('Duration outside numeric range');
+  return seconds;
 }
 
 /**
@@ -52,7 +55,11 @@ export function estimateSeconds(guesses: number, hashesPerSecond: number): numbe
 export function estimateCostUsd(seconds: number, usdPerHour: number): number {
   assertFiniteNonNegative(seconds, 'seconds');
   assertFiniteNonNegative(usdPerHour, 'usdPerHour');
-  return (seconds / SECONDS_PER_HOUR) * usdPerHour;
+  if (seconds === 0 || usdPerHour === 0) return 0;
+  // Scale the larger operand first to preserve representable subnormal products.
+  const usd = (Math.max(seconds, usdPerHour) / SECONDS_PER_HOUR) * Math.min(seconds, usdPerHour);
+  if (!Number.isFinite(usd) || usd === 0) throw new RangeError('Cost outside numeric range');
+  return usd;
 }
 
 /** Map a duration in seconds to its order-of-magnitude bucket. */

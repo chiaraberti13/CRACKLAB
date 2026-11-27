@@ -24,7 +24,8 @@ const isCI = !!process.env.CI;
  * installed itself (`npx playwright install chromium`).
  */
 const PREINSTALLED_CHROMIUM = '/opt/pw-browsers/chromium';
-const executablePath = existsSync(PREINSTALLED_CHROMIUM) ? PREINSTALLED_CHROMIUM : undefined;
+const executablePath =
+  process.env.CRACKLAB_CHROMIUM_PATH ?? (existsSync(PREINSTALLED_CHROMIUM) ? PREINSTALLED_CHROMIUM : undefined);
 
 export default defineConfig({
   testDir: './e2e',
