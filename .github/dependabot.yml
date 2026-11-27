@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    ignore:
+      # typescript-eslint peer-requires typescript <6.1.0, so TypeScript 7 breaks
+      # `npm ci` with ERESOLVE. Hold the major until typescript-eslint supports TS 7.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       # One coherent lockfile update per week instead of a flood of single bumps.
       production-dependencies:
