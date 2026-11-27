@@ -12,3 +12,5 @@ Raccogli osservazioni da 5–8 persone non tecniche. Usa lo stesso browser pulit
 | Completare una lezione con la sola tastiera | Partire dall’indirizzo della home. Osservare previsione, risultato e quiz.                                         | 100% delle sessioni dedicate alla tastiera.                                   |
 
 Calcolare ogni percentuale come successi divisi per partecipanti che hanno ricevuto quella consegna. Annotare rinunce e aiuti separatamente. Rivedere il testo della prima attività se le spiegazioni mostrano una confusione ricorrente. Ripetere la stessa prova dopo la modifica. Il report automatico di accessibilità e questa scheda di raccolta sono evidenze diverse.
+
+In **Capisci**, dopo la prima risposta al quiz, **Risultati della lezione** permette di esportare i conteggi del gruppo per la pagina corrente. Ogni nuova prova avviata con **Ricomincia** contribuisce con la prima risposta. Correggere la risposta durante la stessa prova lascia invariato il conteggio. Il file contiene soltanto identificativo della lezione, numero di risposte e numero di prime risposte corrette.

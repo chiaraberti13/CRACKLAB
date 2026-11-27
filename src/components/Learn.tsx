@@ -15,6 +15,15 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
     [revealed, reveal] = useState(false),
     [guard, setGuard] = useState(true),
     [quiz, setQuiz] = useState<number | null>(null);
+  const [answers, setAnswers] = useState({ responses: 0, correct: 0 });
+  function answer(choice: number) {
+    if (quiz === null)
+      setAnswers((previous) => ({
+        responses: previous.responses + 1,
+        correct: previous.correct + Number(choice === lesson.answer)
+      }));
+    setQuiz(choice);
+  }
   const rows = scene(id, guard, language);
   // SVG content is sourced exclusively from the fixed lesson catalog.
   const card =
@@ -87,7 +96,7 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
             <fieldset>
               <legend>{lesson.quiz}</legend>
               {lesson.choices.map((choice, i) => (
-                <button key={i} aria-pressed={quiz === i} onClick={() => setQuiz(i)}>
+                <button key={i} aria-pressed={quiz === i} onClick={() => answer(i)}>
                   {choice}
                 </button>
               ))}
@@ -102,6 +111,27 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
                   : (it ? 'Riprova. ' : 'Try again. ') + lesson.explanation}
             </p>
           </details>
+          {answers.responses > 0 && (
+            <details>
+              <summary>{it ? 'Risultati della lezione' : 'Lesson results'}</summary>
+              <p>
+                {it ? 'Prime risposte corrette in questa pagina' : 'Correct first responses on this page'}:{' '}
+                {answers.correct} / {answers.responses}.{' '}
+                {it
+                  ? 'Ricomincia per una nuova prova. I conteggi si azzerano uscendo dalla pagina.'
+                  : 'Restart for a new trial. Counts reset when you leave the page.'}
+              </p>
+              <a
+                href={
+                  'data:application/json;charset=utf-8,' +
+                  encodeURIComponent(JSON.stringify({ lesson: id, ...answers }))
+                }
+                download={'cracklab-quiz-' + id + '.json'}
+              >
+                {it ? 'Esporta i conteggi anonimi' : 'Export anonymous counts'}
+              </a>
+            </details>
+          )}
           <a download={'cracklab-' + id + '.svg'} href={'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(card)}>
             {it ? 'Scarica la scheda didattica' : 'Download lesson card'}
           </a>

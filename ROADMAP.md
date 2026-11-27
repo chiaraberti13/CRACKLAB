@@ -639,8 +639,8 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 - [x] **Policy builder**.
 - [x] **HIBP k-anonymity opzionale** con padding, disattivato di default.
 - [x] **PWA offline**.
-- [ ] Aggiornamento periodico di benchmark e prezzi (almeno annuale).
-- [ ] Iterazioni guidate dalle metriche di comprensione.
+- [~] Aggiornamento periodico di benchmark e prezzi (almeno annuale).
+- [~] Iterazioni guidate dalle metriche di comprensione.
 
 **Exit gate (continuo):** crescita misurabile; metriche di comprensione stabili o in miglioramento; adozione da terzi come strumento di awareness.
 
@@ -694,3 +694,7 @@ Lo stato delle spunte include le verifiche successive del 27 novembre.
 | Crescita                | Adozione, metriche longitudinali, manutenzione dei dataset.                                                                                             | Attività continuative                                                        |
 
 I simulatori lavorano su spazi finiti e registri sintetici con esiti osservabili. Le formule e i casi di riferimento sono in `src/sim/teachingCases.ts`, con test per ogni difesa. Il README collega la GIF, due clip e due articoli. Nella misura Lighthouse desktop della home locale, prestazioni e accessibilità hanno ottenuto 100/100. Il protocollo per raccogliere osservazioni reali è in [docs/research/usability.md](docs/research/usability.md).
+
+Il workflow CI conserva l’inventario CycloneDX e applica le soglie Lighthouse. Il controllo mensile segnala dataset con più di dodici mesi. L’aggiornamento dei valori richiede nuove fonti datate. I quiz esportano conteggi anonimi delle prime risposte per le sessioni formative; le metriche di comprensione richiedono partecipanti reali.
+
+Il 27 novembre il progetto e il precedente deployment non risultavano accessibili via Vercel nel team indicato dallo storico GitHub (HTTP 404). Il deploy di produzione e la preview restano aperti fino alla verifica sul progetto corretto. La v1.0 richiede inoltre la revisione indipendente del modello.

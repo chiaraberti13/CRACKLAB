@@ -54,7 +54,7 @@ const it: Catalog = {
   examplesLabel: 'Oppure prova un esempio precaricato',
   scenarioLabel: 'Scenario di attacco',
   guessesLabel: 'Tentativi stimati (zxcvbn)',
-  scoreLabel: 'Prevedibilità',
+  scoreLabel: 'Robustezza stimata',
   comparisonTitle: 'Stessa password, quattro algoritmi',
   comparisonIntro:
     'Con un database sottratto, ecco come cambia l’ordine di grandezza del tempo e del costo dell’attacco a seconda di come il sito conserva la password.',
@@ -93,11 +93,14 @@ const it: Catalog = {
     argon2id: 'Argon2id'
   },
   scenarios: {
-    prudent: { name: 'Prudente', desc: '1 GPU consumer, solo dizionari comuni.' },
-    central: { name: 'Centrale', desc: 'Piccolo cluster noleggiato, dizionari + regole di mutazione.' },
+    prudent: {
+      name: 'Prudente',
+      desc: 'Una GPU consumer. Il numero di tentativi stimati resta uguale nei tre scenari.'
+    },
+    central: { name: 'Centrale', desc: 'Piccolo cluster noleggiato. Cambiano velocità e prezzo ipotizzati.' },
     aggressive: {
       name: 'Aggressivo',
-      desc: 'Cluster di più GPU di fascia alta, attacco mirato con dizionari personalizzati.'
+      desc: 'Cluster con più GPU di fascia alta. Il confronto usa lo stesso esempio e lo stesso numero di tentativi.'
     }
   },
   examples: [
@@ -127,7 +130,7 @@ const en: Catalog = {
   examplesLabel: 'Or try a preloaded example',
   scenarioLabel: 'Attack scenario',
   guessesLabel: 'Estimated guesses (zxcvbn)',
-  scoreLabel: 'Predictability',
+  scoreLabel: 'Estimated strength',
   comparisonTitle: 'Same password, four algorithms',
   comparisonIntro:
     'With a stolen database, here is how the order of magnitude of the attack time and cost changes depending on how the site stores the password.',
@@ -166,11 +169,11 @@ const en: Catalog = {
     argon2id: 'Argon2id'
   },
   scenarios: {
-    prudent: { name: 'Prudent', desc: '1 consumer GPU, common dictionaries only.' },
-    central: { name: 'Central', desc: 'Small rented cluster, dictionaries + mutation rules.' },
+    prudent: { name: 'Prudent', desc: 'One consumer GPU. Estimated guesses stay the same across scenarios.' },
+    central: { name: 'Central', desc: 'Small rented cluster. Assumed speed and price change.' },
     aggressive: {
       name: 'Aggressive',
-      desc: 'Multi high-end GPU cluster, targeted attack with custom dictionaries.'
+      desc: 'Multiple high-end GPUs. The comparison keeps the same sample and guess count.'
     }
   },
   examples: [

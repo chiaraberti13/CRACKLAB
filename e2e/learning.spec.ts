@@ -123,3 +123,16 @@ test('synthetic logs show a denied second factor and work spaces reflect salts',
   await page.getByRole('combobox').selectOption('mask');
   await expect(page.getByText('Verifiche complessive').locator('..')).toHaveText('Verifiche complessive32');
 });
+
+test('quiz retries do not inflate the first-response count', async ({ page }) => {
+  await page.goto('/capisci/mfa/');
+  await page.getByRole('button', { name: 'Sì', exact: true }).click();
+  await page.getByRole('button', { name: 'Mostra l’esperimento' }).click();
+  await page.getByText('Verifica cosa hai capito').click();
+  await page.getByRole('button', { name: 'Subito dopo la password' }).click();
+  await page.getByRole('button', { name: 'Dopo tutti i fattori richiesti' }).click();
+  await page.getByText('Risultati della lezione').click();
+  const link = page.getByRole('link', { name: 'Esporta i conteggi anonimi' });
+  const report = JSON.parse(decodeURIComponent((await link.getAttribute('href'))!.split(',')[1]));
+  expect(report).toEqual({ lesson: 'mfa', responses: 1, correct: 0 });
+});
