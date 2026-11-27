@@ -41,6 +41,10 @@ Non è un cracker, per scelta architetturale: nessun input di hash di terzi, nes
 
 **Capisci** propone quattro esperimenti con previsione, difesa modificabile, quiz e scheda scaricabile. **Progetta** misura un input sintetico con parametri KDF regolabili ed esporta i risultati locali. Include anche un laboratorio di policy, un generatore di passphrase e una dimostrazione delle precomputazioni. La verifica facoltativa Pwned Passwords ha una pagina di consenso separata. Dopo la prima installazione online, i percorsi didattici funzionano offline. Vedi i [criteri di chiusura](ROADMAP.md).
 
+![Confronto dei costi e dei fattori di accesso](assets/media/cracklab-demo.gif)
+
+[Salt e prevedibilità](docs/research/salt-e-prevedibilita.md) · [Dal primo fattore alla sessione](docs/research/dal-primo-fattore-alla-sessione.md) · [Clip del confronto](assets/media/confronto.mp4) · [Clip MFA](assets/media/secondo-fattore.mp4)
+
 ## 🗺️ Diagramma dell’architettura
 
 ```mermaid

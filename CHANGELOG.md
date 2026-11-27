@@ -8,6 +8,7 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ### Added
 
+- Fixed offline work comparisons and aggregate authentication logs for comparing rate limits, lockout, delay, correlation and MFA.
 - Guided learning paths, optional quizzes and fixed-content teaching cards in Italian and English.
 - Configurable KDF measurements, synthetic-only reports, policy and passphrase experiments, an offline bundle and a separately consented padded breach lookup.
 - Immediate invalidation of previous estimates, bounded sample length and explicit handling of numeric range errors.

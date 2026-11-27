@@ -6,7 +6,7 @@ export function scene(id: LessonId, guard: boolean, language: Language): [string
   const it = language === 'it';
   if (id === 'same-password')
     return [
-      [it ? 'Record A' : 'Record A', guard ? 'salt A → α' : '∅ → α'],
+      ['Record A', guard ? 'salt A → α' : '∅ → α'],
       ['Record B', guard ? 'salt B → β' : '∅ → α']
     ];
   if (id === 'salt')

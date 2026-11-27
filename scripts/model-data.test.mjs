@@ -39,3 +39,9 @@ test('validateDatasets rejects a non-positive hash rate and a negative price', (
   assert.ok(errors.some((e) => e.includes('hashesPerSecond')));
   assert.ok(errors.some((e) => e.includes('usdPerHour')));
 });
+
+test('stale pricing is visible even if all benchmarks are recent', () => {
+  const p = { scenario: 'central', kind: 'assumption', source: 'example', date: '2024-01-01', usdPerHour: 1 };
+  const result = validateDatasets({ entries: [] }, { entries: [p] }, Date.parse('2026-11-27'));
+  assert.match(result.warnings[0], /pricing central/);
+});

@@ -55,12 +55,10 @@ export function SampleResult({
                 }).format(result.guesses)}
               </div>
             </div>
-            {
-              <div>
-                <div className="text-xs uppercase tracking-wide text-ink-muted">{t.scoreLabel}</div>
-                <div className="font-mono text-lg text-ink-primary">{result.score}/4</div>
-              </div>
-            }
+            <div>
+              <div className="text-xs uppercase tracking-wide text-ink-muted">{t.scoreLabel}</div>
+              <div className="font-mono text-lg text-ink-primary">{result.score}/4</div>
+            </div>
           </div>
 
           <StrengthMeter guesses={result.guesses} scenario={scenario} language={language} />

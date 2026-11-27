@@ -35,6 +35,19 @@ export function checkDeploymentSecurity(config) {
       problems.push(`CSP is missing required directive: ${directive}`);
     }
   }
+  const connections = csp
+    .split(';')
+    .map((d) => d.trim())
+    .filter((d) => d.startsWith('connect-src '));
+  if (connections.length !== 1 || connections[0] !== "connect-src 'self'")
+    problems.push('Documents must connect only to their own origin.');
+  const rangeRule = config.headers.find((rule) => rule.source === '/hibp/range-worker.js');
+  const workerPolicy = rangeRule?.headers.find((h) => h.key.toLowerCase() === 'content-security-policy')?.value;
+  if (
+    workerPolicy !==
+    "default-src 'none'; connect-src https://api.pwnedpasswords.com; object-src 'none'; base-uri 'none'"
+  )
+    problems.push('Range worker must be restricted to the padded range service.');
   if (csp.includes("'unsafe-eval'")) {
     problems.push("CSP must not allow 'unsafe-eval'.");
   }

@@ -29,7 +29,7 @@ export function staleWarnings(entries, labelOf, now = Date.now()) {
     if (typeof entry.date === 'string' && ISO_DATE.test(entry.date)) {
       const age = now - Date.parse(entry.date);
       if (age > TWELVE_MONTHS_MS) {
-        warnings.push(`${labelOf(entry)}: benchmark is older than 12 months (${entry.date}); refresh it via PR.`);
+        warnings.push(`${labelOf(entry)}: entry is older than 12 months (${entry.date}); refresh it via PR.`);
       }
     }
   }
@@ -56,6 +56,7 @@ export function validateDatasets(benchmarks, pricing, now = Date.now()) {
   });
 
   warnings.push(...staleWarnings(benchmarks.entries, (e) => `benchmarks ${e.algorithm}/${e.scenario}`, now));
+  warnings.push(...staleWarnings(pricing.entries, (e) => 'pricing ' + e.scenario, now));
   return { errors, warnings };
 }
 

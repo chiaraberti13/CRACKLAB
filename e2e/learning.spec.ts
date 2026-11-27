@@ -93,3 +93,33 @@ test.describe('consented range request', () => {
     expect(calls).toEqual(Array(2).fill('https://api.pwnedpasswords.com/range/' + hex.slice(0, 5)));
   });
 });
+
+test('changing a sample clears stale comparisons immediately and clear removes results', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Debole', exact: true }).click();
+  const comparison = page.getByRole('heading', { name: 'Stessa password, quattro algoritmi' });
+  await expect(comparison).toBeVisible();
+  await page.getByRole('button', { name: 'Passphrase', exact: true }).click();
+  expect(await comparison.count()).toBe(0);
+  await expect(comparison).toBeVisible();
+  await page.getByRole('button', { name: 'Svuota tutto' }).click();
+  await expect(comparison).toHaveCount(0);
+  await expect(page.getByLabel('Password di prova', { exact: true })).toBeEmpty();
+});
+
+test('synthetic logs show a denied second factor and work spaces reflect salts', async ({ page }) => {
+  await page.goto('/capisci/mfa/');
+  await page.getByRole('button', { name: 'Sì', exact: true }).click();
+  await page.getByRole('button', { name: 'Mostra l’esperimento' }).click();
+  await page.getByText('Confronta i controlli su tre registri sintetici').click();
+  await page.getByRole('combobox', { name: 'Registro' }).selectOption('stuffing');
+  await page.getByRole('combobox', { name: 'Controllo applicato' }).selectOption('mfa');
+  const details = page.locator('details[open]');
+  await expect(details.getByText('Accessi completati').locator('..')).toHaveText('Accessi completati0');
+  await page.goto('/capisci/salt/');
+  await page.getByRole('button', { name: 'No', exact: true }).click();
+  await page.getByRole('button', { name: 'Mostra l’esperimento' }).click();
+  await page.getByText('Confronta il lavoro su due record').click();
+  await page.getByRole('combobox').selectOption('mask');
+  await expect(page.getByText('Verifiche complessive').locator('..')).toHaveText('Verifiche complessive32');
+});

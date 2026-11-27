@@ -1,3 +1,4 @@
+import { CaseComparison } from './CaseComparison';
 import { useState } from 'react';
 import { lessonIds, lessons, type LessonId } from '../lessons/catalog';
 import { scene } from '../lessons/scene';
@@ -80,6 +81,7 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
           <p>
             <strong>{it ? 'Difesa' : 'Defense'}</strong> · {lesson.defense}
           </p>
+          <CaseComparison language={language} online={id === 'lockout' || id === 'mfa'} />
           <details>
             <summary>{it ? 'Verifica cosa hai capito' : 'Check your understanding'}</summary>
             <fieldset>

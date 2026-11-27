@@ -604,8 +604,8 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 
 **Simulazione**
 
-- [~] Motore **offline**: dictionary, mask, brute force su spazio ridotto; effetto di salt e KDF lento.
-- [~] Motore **online**: dictionary/stuffing/**spraying** contro rate limit, lockout, MFA, rilevamento spray, delay progressivo — con i **quattro esiti** distinti.
+- [x] Motore **offline**: dictionary, mask, brute force su spazio ridotto; effetto di salt e KDF lento.
+- [x] Motore **online**: dictionary/stuffing/**spraying** contro rate limit, lockout, MFA, rilevamento spray, delay progressivo — con i **quattro esiti** distinti.
 
 **Scenari "Capisci"** (struttura domanda → previsione → simulazione → spiegazione → limite → difesa)
 
@@ -628,7 +628,7 @@ L'elenco esteso serve a non dimenticare nessuna dimensione; ogni competenza è a
 
 **Crescita**
 
-- [~] README con GIF; 2–3 articoli; pagine-intento SEO (una per scenario); clip social.
+- [x] README con GIF; 2–3 articoli; pagine-intento SEO (una per scenario); clip social.
 
 **Exit gate:** Lighthouse Perf/A11y ≥ 90; animazioni accessibili; simulazioni testate; revisione esterna del modello; nessun blocker privacy/etica; v1.0 taggata (SemVer) + changelog.
 
@@ -692,3 +692,5 @@ Lo stato delle spunte include le verifiche successive del 27 novembre.
 | Validazione con persone | 5–8 partecipanti non tecnici, tempi per trovare le assunzioni, comprensione, prova assistiva.                                                           | Mancano osservazioni dirette                                                 |
 | Pubblicazione           | Il ramo principale risultava privo di protezione. Produzione e preview richiedono riscontro sul deploy.                                                 | Verifica infrastrutturale distinta dai test locali                           |
 | Crescita                | Adozione, metriche longitudinali, manutenzione dei dataset.                                                                                             | Attività continuative                                                        |
+
+I simulatori lavorano su spazi finiti e registri sintetici con esiti osservabili. Le formule e i casi di riferimento sono in `src/sim/teachingCases.ts`, con test per ogni difesa. Il README collega la GIF, due clip e due articoli. Nella misura Lighthouse desktop della home locale, prestazioni e accessibilità hanno ottenuto 100/100. Il protocollo per raccogliere osservazioni reali è in [docs/research/usability.md](docs/research/usability.md).

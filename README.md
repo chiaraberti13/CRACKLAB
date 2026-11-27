@@ -41,6 +41,10 @@ It is deliberately **not a cracker**: there is no input for third-party hashes, 
 
 **Learn** includes four guided experiments, predictions, defensive controls, a quiz and downloadable teaching cards. **Design** measures synthetic inputs with adjustable KDF parameters and exports local results. It also includes a policy builder, a random-passphrase experiment and a conceptual precomputation demo. The optional Pwned Passwords check uses a separate consent screen. After the first online installation the teaching paths work offline. See the [closure criteria](ROADMAP.md).
 
+![Cost comparison and authentication experiment](assets/media/cracklab-demo.gif)
+
+[Salt and predictability (IT)](docs/research/salt-e-prevedibilita.md) · [From first factor to session (IT)](docs/research/dal-primo-fattore-alla-sessione.md) · [Comparison clip](assets/media/confronto.mp4) · [MFA clip](assets/media/secondo-fattore.mp4)
+
 ## 🗺️ Architecture Diagram
 
 ```mermaid

@@ -4,7 +4,7 @@ How CrackLab is governed and what the automated gates guarantee.
 
 ## Branching and review
 
-- `main` is always deployable and protected: PR required, CI green, review.
+- The roadmap calls for protected releases. On 2026-11-27 GitHub reported `protected: false` on `main`; direct updates were requested for this delivery.
 - Feature branch → Pull Request → CI + Vercel preview deploy → review (including the Definition of Done) → merge → production.
 - Conventional Commits + Semantic Versioning + changelog.
 

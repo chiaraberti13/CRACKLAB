@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vite --port=3000 --host=127.0.0.1",
     "dev:network": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && node scripts/static-pages.mjs",
+    "build": "vite build && node --experimental-strip-types scripts/static-pages.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
