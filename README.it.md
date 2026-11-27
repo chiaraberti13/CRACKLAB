@@ -12,7 +12,7 @@
 
 > Non predice quando cadrà la tua password. Ti mostra cosa cambia davvero il costo di un attacco.
 
-<p align="center"><a href="https://cracklab.vercel.app"><strong>Demo live</strong></a> · <a href="SECURITY.md">Sicurezza</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Modello di stima</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licenza</a></p>
+<p align="center"><a href="https://cracklab-pi.vercel.app"><strong>Demo live</strong></a> · <a href="SECURITY.md">Sicurezza</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Modello di stima</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licenza</a></p>
 
 ---
 

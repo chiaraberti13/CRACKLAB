@@ -12,7 +12,7 @@
 
 > It doesn't predict when your password will fall. It shows what really changes the cost of an attack.
 
-<p align="center"><a href="https://cracklab.vercel.app"><strong>Live demo</strong></a> · <a href="SECURITY.md">Security</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Estimation model</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licence</a></p>
+<p align="center"><a href="https://cracklab-pi.vercel.app"><strong>Live demo</strong></a> · <a href="SECURITY.md">Security</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Estimation model</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licence</a></p>
 
 ---
 

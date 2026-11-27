@@ -39,7 +39,7 @@
       "has": [
         {
           "type": "host",
-          "value": "cracklab.vercel.app"
+          "value": "cracklab-pi.vercel.app"
         }
       ],
       "headers": [
