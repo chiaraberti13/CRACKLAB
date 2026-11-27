@@ -12,7 +12,7 @@
 
 > It doesn't predict when your password will fall. It shows what really changes the cost of an attack.
 
-<p align="center"><a href="SECURITY.md">Security</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Estimation model</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="ROADMAP.md">Roadmap</a> · <a href="LICENSE">Licence</a></p>
+<p align="center"><a href="https://cracklab.vercel.app"><strong>Live demo</strong></a> · <a href="SECURITY.md">Security</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Estimation model</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licence</a></p>
 
 ---
 
@@ -39,7 +39,7 @@ It is deliberately **not a cracker**: there is no input for third-party hashes, 
 - **A single concrete lesson and action** (password manager, generated passphrase, MFA).
 - Bilingual **IT/EN**, full keyboard access, `prefers-reduced-motion`, and a permanent "use an example" warning — from day one.
 
-**Learn** includes four guided experiments, predictions, defensive controls, a quiz and downloadable teaching cards. **Design** measures synthetic inputs with adjustable KDF parameters and exports local results. It also includes a policy builder, a random-passphrase experiment and a conceptual precomputation demo. The optional Pwned Passwords check uses a separate consent screen. After the first online installation the teaching paths work offline. See the [closure criteria](ROADMAP.md).
+**Learn** includes four guided experiments, predictions, defensive controls, a quiz and downloadable teaching cards. **Design** measures synthetic inputs with adjustable KDF parameters and exports local results. It also includes a policy builder, a random-passphrase experiment and a conceptual precomputation demo. The optional Pwned Passwords check uses a separate consent screen. After the first online installation the teaching paths work offline.
 
 ![Cost comparison and authentication experiment](assets/media/cracklab-demo.gif)
 

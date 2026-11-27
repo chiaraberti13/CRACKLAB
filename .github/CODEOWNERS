@@ -5,7 +5,6 @@
 /.github/security-exceptions.yml @chiaraberti13
 /.github/workflows/ @chiaraberti13
 /CHANGELOG.md @chiaraberti13
-/ROADMAP.md @chiaraberti13
 
 # Dependency and build trust boundary
 /.npmrc @chiaraberti13

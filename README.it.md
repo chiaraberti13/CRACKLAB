@@ -12,7 +12,7 @@
 
 > Non predice quando cadrà la tua password. Ti mostra cosa cambia davvero il costo di un attacco.
 
-<p align="center"><a href="SECURITY.md">Sicurezza</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Modello di stima</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="ROADMAP.md">Roadmap</a> · <a href="LICENSE">Licenza</a></p>
+<p align="center"><a href="https://cracklab.vercel.app"><strong>Demo live</strong></a> · <a href="SECURITY.md">Sicurezza</a> · <a href="docs/PRIVACY.md">Privacy</a> · <a href="docs/MODEL.md">Modello di stima</a> · <a href="docs/THREAT_MODEL.md">Threat model</a> · <a href="LICENSE">Licenza</a></p>
 
 ---
 
@@ -39,7 +39,7 @@ Non è un cracker, per scelta architetturale: nessun input di hash di terzi, nes
 - **Una lezione e un'azione concrete** (password manager, passphrase generata, MFA).
 - Bilingue **IT/EN**, tastiera completa, `prefers-reduced-motion` e avviso permanente "usa un esempio" — fin dal primo giorno.
 
-**Capisci** propone quattro esperimenti con previsione, difesa modificabile, quiz e scheda scaricabile. **Progetta** misura un input sintetico con parametri KDF regolabili ed esporta i risultati locali. Include anche un laboratorio di policy, un generatore di passphrase e una dimostrazione delle precomputazioni. La verifica facoltativa Pwned Passwords ha una pagina di consenso separata. Dopo la prima installazione online, i percorsi didattici funzionano offline. Vedi i [criteri di chiusura](ROADMAP.md).
+**Capisci** propone quattro esperimenti con previsione, difesa modificabile, quiz e scheda scaricabile. **Progetta** misura un input sintetico con parametri KDF regolabili ed esporta i risultati locali. Include anche un laboratorio di policy, un generatore di passphrase e una dimostrazione delle precomputazioni. La verifica facoltativa Pwned Passwords ha una pagina di consenso separata. Dopo la prima installazione online, i percorsi didattici funzionano offline.
 
 ![Confronto dei costi e dei fattori di accesso](assets/media/cracklab-demo.gif)
 
