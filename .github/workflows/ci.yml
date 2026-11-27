@@ -3,6 +3,9 @@ name: CI
 on:
   push:
     branches: [main]
+  schedule:
+    # Check both dated datasets even during periods without commits.
+    - cron: '17 8 1 * *'
   pull_request:
     branches: [main]
 
@@ -14,7 +17,17 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  model-freshness:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: node scripts/model-data.mjs --require-fresh
+
   quality:
+    if: github.event_name != 'schedule'
     name: verify (lint · types · tests · model · build)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -46,6 +59,7 @@ jobs:
           retention-days: 14
 
   e2e:
+    if: github.event_name != 'schedule'
     name: end-to-end (Chromium + axe + privacy)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -70,6 +84,12 @@ jobs:
       - name: Run end-to-end suite
         run: npm run test:e2e
 
+      - name: Check Lighthouse budgets
+        run: |
+          export CHROME_PATH="$(node --input-type=module -e "import { chromium } from 'playwright'; console.log(chromium.executablePath())")"
+          npm exec --yes --package=@lhci/cli@0.15.1 -- lhci collect --chromePath="$CHROME_PATH"
+          npm exec --yes --package=@lhci/cli@0.15.1 -- lhci assert
+
       - name: Retain Playwright report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -80,6 +100,7 @@ jobs:
           retention-days: 14
 
   audit:
+    if: github.event_name != 'schedule'
     name: dependency audit
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -100,3 +121,13 @@ jobs:
 
       - name: Audit (high and above)
         run: npm run audit:full
+
+      - name: Generate CycloneDX inventory
+        run: npm sbom --sbom-format=cyclonedx --package-lock-only > sbom.cdx.json
+
+      - name: Retain dependency inventory
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dependency-inventory
+          path: sbom.cdx.json
+          retention-days: 14

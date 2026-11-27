@@ -70,6 +70,8 @@ function main() {
   const { errors, warnings } = validateDatasets(benchmarks, pricing);
 
   for (const warning of warnings) console.warn(`warning: ${warning}`);
+  if (process.argv.includes('--require-fresh') && warnings.length)
+    errors.push('Refresh dated inputs using a documented source.');
   if (errors.length > 0) {
     for (const error of errors) console.error(`error: ${error}`);
     console.error(`\nModel data validation failed with ${errors.length} error(s).`);
