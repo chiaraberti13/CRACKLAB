@@ -31,6 +31,17 @@ test('a guided lesson fits a phone', async ({ page }) => {
   await expectNoHorizontalScroll(page);
 });
 
+test('the hamburger menu reveals navigation on a phone', async ({ page }) => {
+  await page.goto('/');
+  const menuButton = page.getByRole('button', { name: /apri menu|open menu/i });
+  await expect(menuButton).toBeVisible();
+  await menuButton.click();
+  const menu = page.locator('#mobile-menu');
+  await expect(menu.getByRole('link', { name: /capisci|learn/i })).toBeVisible();
+  await menu.getByRole('link', { name: /capisci|learn/i }).click();
+  await expect(page).toHaveURL(/\/capisci\//);
+});
+
 test('no WCAG A/AA violations at phone width', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: /debole|weak/i }).click();

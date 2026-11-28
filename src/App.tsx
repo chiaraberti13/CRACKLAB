@@ -1,4 +1,5 @@
-import { useEffect, useId } from 'react';
+import { useEffect, useId, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { LocalKdfLab } from './components/LocalKdfLab';
 import { SampleResult } from './components/SampleResult';
 import { BreachCheck } from './components/BreachCheck';
@@ -29,6 +30,34 @@ export default function App() {
   const it = language === 'it';
   const t = useCatalog(language);
   const inputId = useId();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Theme + language controls, reused inline on desktop and inside the mobile menu.
+  const controls = (
+    <>
+      <button
+        type="button"
+        className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      >
+        {theme === 'dark' ? (it ? 'Tema chiaro' : 'Light theme') : it ? 'Tema scuro' : 'Dark theme'}
+      </button>
+      <button
+        type="button"
+        onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
+        className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
+      >
+        {t.langToggle}
+      </button>
+    </>
+  );
+
+  const paths: [string, string][] = [
+    ['', it ? 'Prova' : 'Try'],
+    ['capisci', it ? 'Capisci' : 'Learn'],
+    ['progetta', it ? 'Progetta' : 'Design']
+  ];
+
   return (
     <div className="min-h-dvh overflow-x-hidden">
       <a
@@ -39,37 +68,46 @@ export default function App() {
       </a>
 
       <header className="border-b border-stroke">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
           <span className="font-mono text-lg font-semibold text-ink-primary">{t.appName}</span>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? (it ? 'Tema chiaro' : 'Light theme') : it ? 'Tema scuro' : 'Dark theme'}
-            </button>
-            <button
-              type="button"
-              onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
-              className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
-            >
-              {t.langToggle}
-            </button>
-          </div>
+          {/* Desktop: controls inline. Mobile: a hamburger toggles the menu below. */}
+          <div className="hidden flex-wrap gap-2 sm:flex">{controls}</div>
+          <button
+            type="button"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-stroke text-ink-secondary hover:border-stroke-strong sm:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={it ? (menuOpen ? 'Chiudi menu' : 'Apri menu') : menuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
+          </button>
         </div>
+        {menuOpen && (
+          <div id="mobile-menu" className="border-t border-stroke px-4 py-3 sm:hidden">
+            <nav aria-label={it ? 'Percorsi' : 'Learning paths'} className="flex flex-col">
+              {paths.map(([path, label]) => (
+                <a
+                  className="path-link"
+                  key={path}
+                  aria-current={section === path ? 'page' : undefined}
+                  href={'/' + path + (path ? '/' : '')}
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <div className="mt-3 flex flex-wrap gap-2 border-t border-stroke pt-3">{controls}</div>
+          </div>
+        )}
       </header>
 
       <main id="main" className="mx-auto max-w-3xl px-4 py-6 sm:py-10">
         <h1 className="text-balance text-2xl font-bold text-ink-primary sm:text-3xl">{t.appName}</h1>
         <p className="mt-2 max-w-2xl text-pretty text-ink-secondary">{t.tagline}</p>
 
-        <nav className="my-5 flex flex-wrap gap-4" aria-label={it ? 'Percorsi' : 'Learning paths'}>
-          {[
-            ['', it ? 'Prova' : 'Try'],
-            ['capisci', it ? 'Capisci' : 'Learn'],
-            ['progetta', it ? 'Progetta' : 'Design']
-          ].map(([path, label]) => (
+        <nav className="my-5 hidden flex-wrap gap-4 sm:flex" aria-label={it ? 'Percorsi' : 'Learning paths'}>
+          {paths.map(([path, label]) => (
             <a
               className="path-link"
               key={path}
