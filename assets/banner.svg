@@ -2,8 +2,8 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#11162100" />
-      <stop offset="0" stop-color="#141925" />
-      <stop offset="1" stop-color="#0c0f17" />
+      <stop offset="0" stop-color="#16181f" />
+      <stop offset="1" stop-color="#0d0e12" />
     </linearGradient>
   </defs>
   <rect width="1200" height="240" rx="18" fill="url(#bg)" />
@@ -15,7 +15,7 @@
     <path d="M-26 -34h52M-26 34h52" stroke="#3a4458" stroke-width="5" stroke-linecap="round" />
     <path d="M-22 -34c0 22 44 20 44 34s-44 12-44 34" fill="none" stroke="#f26d72" stroke-width="5" stroke-linecap="round" />
     <path d="M22 -34c0 22-44 20-44 34s44 12 44 34" fill="none" stroke="#d6a23c" stroke-width="5" stroke-linecap="round" />
-    <circle cy="2" r="4" fill="#6ea8fe" />
+    <circle cy="2" r="4" fill="#3fd0c9" />
   </g>
 
   <g font-family="ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
