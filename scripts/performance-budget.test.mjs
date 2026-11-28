@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { entryGzipBytes, evaluateBudget, routeChunks } from './performance-budget.mjs';
+import { entryGzipBytes, evaluateBudget, routeChunks, staticChunks } from './performance-budget.mjs';
 
 test('evaluateBudget passes at or under the limit and fails above it', () => {
   assert.equal(evaluateBudget(100, 100).ok, true);
@@ -22,4 +22,14 @@ test('routeChunks requires the learning, design and breach routes to stay lazy',
   assert.deepEqual(routeChunks(routes), ['assets/BreachCheck.js', 'assets/Design.js', 'assets/Learn.js']);
   delete routes['src/components/Design.tsx'];
   assert.throws(() => routeChunks(routes), /Expected a lazy route chunk for src\/components\/Design.tsx/);
+});
+
+test('staticChunks counts shared imports once and excludes lazy imports', () => {
+  const manifest = {
+    entry: { file: 'entry.js', imports: ['vendor', 'feature'], dynamicImports: ['lazy'] },
+    vendor: { file: 'vendor.js' },
+    feature: { file: 'feature.js', imports: ['vendor'] },
+    lazy: { file: 'lazy.js' }
+  };
+  assert.deepEqual([...staticChunks(manifest, 'entry')], ['entry.js', 'vendor.js', 'feature.js']);
 });

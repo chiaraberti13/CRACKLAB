@@ -5,7 +5,7 @@ Initial and lazy-route JavaScript are protected by a versioned budget so the bun
 ## Budgets
 
 - `performance-budgets.json` — the source-of-truth budget (initial JS gzip, route chunk gzip), with a measured
-  baseline (date + commit). `scripts/performance-budget.mjs` resolves the entry and the Learn, Design and Breach Check chunks from stable Vite manifest keys, gzips them and checks their individual budgets.
+  baseline (date + commit). `scripts/performance-budget.mjs` resolves the entry and the Learn, Design and Breach Check chunks from stable Vite manifest keys, gzips them and checks their individual budgets. The initial budget includes shared static imports once and excludes lazy imports.
 - **Size Limit** (`size-limit` in `package.json`) covers the same entry independently.
 - **Lighthouse CI** (`lighthouserc.json`, `lighthouse-budget.json`) checks the real route with blocking
   accessibility and performance thresholds.

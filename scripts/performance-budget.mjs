@@ -10,11 +10,27 @@ export function evaluateBudget(measuredBytes, budgetBytes) {
   return { ok: measuredBytes <= budgetBytes, measuredBytes, budgetBytes };
 }
 
-export function entryGzipBytes(distDir, manifest) {
-  const entry = Object.values(manifest).find((chunk) => chunk.isEntry);
+export function staticChunks(manifest, source, files = new Set()) {
+  const chunk = manifest[source];
+  if (!chunk) throw new Error(`Missing chunk in the Vite manifest: ${source}.`);
+  if (files.has(chunk.file)) return files;
+  files.add(chunk.file);
+  for (const dependency of chunk.imports ?? []) staticChunks(manifest, dependency, files);
+  return files;
+}
+
+function entryChunks(manifest) {
+  const entry = Object.keys(manifest).find((source) => manifest[source].isEntry);
   if (!entry) throw new Error('No entry chunk found in the Vite manifest.');
-  const buffer = readFileSync(join(distDir, entry.file));
-  return gzipSync(buffer).length;
+  return staticChunks(manifest, entry);
+}
+
+function gzipBytes(distDir, files) {
+  return [...files].reduce((bytes, file) => bytes + gzipSync(readFileSync(join(distDir, file))).length, 0);
+}
+
+export function entryGzipBytes(distDir, manifest) {
+  return gzipBytes(distDir, entryChunks(manifest));
 }
 
 const routeSources = ['BreachCheck', 'Design', 'Learn'].map((name) => `src/components/${name}.tsx`);
