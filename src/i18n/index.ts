@@ -10,6 +10,17 @@ import type { Language } from '../store';
 export interface Catalog {
   appName: string;
   tagline: string;
+  navigation: {
+    label: string;
+    try: string;
+    learn: string;
+    design: string;
+    skipToContent: string;
+    openMenu: string;
+    closeMenu: string;
+    lightTheme: string;
+    darkTheme: string;
+  };
   warning: string;
   sampleLabel: string;
   samplePlaceholder: string;
@@ -47,6 +58,17 @@ export interface Catalog {
 
 const it: Catalog = {
   appName: 'CrackLab',
+  navigation: {
+    label: 'Percorsi',
+    try: 'Prova',
+    learn: 'Capisci',
+    design: 'Progetta',
+    skipToContent: 'Vai al contenuto',
+    openMenu: 'Apri menu',
+    closeMenu: 'Chiudi menu',
+    lightTheme: 'Tema chiaro',
+    darkTheme: 'Tema scuro'
+  },
   tagline: 'Non predice quando cadrà la tua password. Ti mostra cosa cambia davvero il costo di un attacco.',
   warning: 'Usa un esempio o una variazione inventata, non una password che usi davvero.',
   sampleLabel: 'Password di prova',
@@ -123,6 +145,17 @@ const it: Catalog = {
 
 const en: Catalog = {
   appName: 'CrackLab',
+  navigation: {
+    label: 'Learning paths',
+    try: 'Try',
+    learn: 'Learn',
+    design: 'Design',
+    skipToContent: 'Skip to content',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    lightTheme: 'Light theme',
+    darkTheme: 'Dark theme'
+  },
   tagline: "It doesn't predict when your password will fall. It shows what really changes the cost of an attack.",
   warning: 'Use an example or an invented variation, not a password you actually use.',
   sampleLabel: 'Sample password',

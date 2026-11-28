@@ -30,7 +30,7 @@ prevedibile.** Servono entrambe le cose: una password non indovinabile _e_ una c
 Non è un cracker, per scelta architetturale: nessun input di hash di terzi, nessun wordlist-cracking, nessuna funzione
 "buca questo hash". Ogni scenario d'attacco termina in una difesa concreta.
 
-## Funzionalità (MVP — "Prova")
+## Prova
 
 - **Tre esempi precaricati** con prevedibilità diversa, più una password di prova inventata da digitare.
 - **Stima locale della prevedibilità** con [zxcvbn-ts](https://zxcvbn-ts.github.io/zxcvbn/) (tentativi stimati, punteggio 0–4).
@@ -103,8 +103,8 @@ TypeScript · React 19 · Vite 8 · Tailwind CSS 4 · Zustand (sole preferenze, 
 src/
 ├─ model/       formule di stima pure + data/ (benchmarks.json, pricing.json) + test
 ├─ strength/    integrazione zxcvbn-ts (stima di prevedibilità)
-├─ sim/         motori di simulazione offline/online (Fase 2)
-├─ scenarios/   scenari guidati "Capisci" come dati (Fase 2)
+├─ sim/         confronti didattici sintetici e gestore dei benchmark locali
+├─ lessons/     scenari guidati bilingui e materiali didattici
 ├─ components/  UI (StrengthMeter, …)
 ├─ i18n/        cataloghi tipizzati IT/EN
 ├─ store.ts     stato — unico confine di persistenza; l'input non è mai persistito

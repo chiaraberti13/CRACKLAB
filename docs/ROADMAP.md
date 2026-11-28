@@ -1,0 +1,29 @@
+# Roadmap di CrackLab
+
+Aggiornata il 28 novembre 2026 a partire da `3556cac`. Competenze di riferimento in [COMPETENZE.md](COMPETENZE.md).
+
+## Stato e perimetro
+
+CrackLab è un prodotto didattico maturo, con demo pubblica e versione di pacchetto `0.1.0`. I tre percorsi Prova, Capisci e Progetta sono presenti. La roadmap originaria è stata rimossa da `087e749`. Il suo [ultimo stato in Git](https://github.com/chiaraberti13/CRACKLAB/blob/9588625/ROADMAP.md) conserva i criteri e le evidenze del 27 novembre. Qui confluiscono le verifiche residue delle fasi 0–3. La ricerca comparativa già svolta resta in [research/competitors.md](research/competitors.md). La ricerca di issue aperte su GitHub ha restituito zero risultati.
+
+Il perimetro comprende stime dichiaratamente illustrative, lezioni difensive, misure KDF su dati sintetici, funzionamento offline ed esportazioni locali. L'audit del rilascio deve confermare i confini di privacy descritti in [PRIVACY.md](PRIVACY.md), compresa l'eccezione del controllo facoltativo su consenso.
+
+## Evidenze e criteri di chiusura
+
+| ID    | Priorità | Stato          | Dipendenze / costo | Evidenza, rischio e criterio di chiusura                                                                                                                                                                                                                                                                                                                      |
+| ----- | -------- | -------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CL-01 | P0       | DONE           | — / S              | Assessment, ripristino della roadmap e inventario del progetto. Installazione pulita con `npm ci`, 391 voci del lockfile validate.                                                                                                                                                                                                                            |
+| CL-02 | P0       | READY_TO_CLOSE | CL-01 / S          | Formattazione dei file di governance e struttura dei README corretta. Menu mobile con pannello raggiungibile tramite `aria-controls`, chiusura da Escape, ripristino del focus e testi della navigazione nel catalogo IT/EN. Regressione Playwright superata.                                                                                                 |
+| CL-03 | P0       | READY_TO_CLOSE | CL-02 / M          | Prova e modello in `src/model` e `src/strength`, quattro scenari guidati in `src/lessons`, laboratorio sintetico e strumenti in `src/components`. `npm run verify` superato con 37 test Vitest, controlli del modello, copertura, build e budget JS. Regressioni browser superate. Resta la verifica contestuale della parità delle lezioni nelle due lingue. |
+| CL-04 | P0       | PARTIAL        | CL-02 / M          | Demo pubblica con HTTP 200 e CSP osservata sulla home. Confermare la corrispondenza tra artefatto e commit, gli header per percorso, la preview e il rollback Vercel. E2E di rete e offline superati. Restano le scansioni previste dal CI.                                                                                                                   |
+| CL-05 | P1       | TODO           | CL-03 / M          | Modello con 12 benchmark e 3 prezzi, controlli automatici superati e nessun avviso di anzianità. I tassi e i prezzi sono ipotesi illustrative. Per chiudere serve una revisione indipendente di fonti, ordini di grandezza, limiti e leggibilità delle assunzioni.                                                                                            |
+| CL-06 | P1       | TODO           | CL-02 / M          | Completare la prova con 5–8 partecipanti non tecnici e una verifica con tecnologia assistiva. Raccogliere comprensione, raggiungibilità delle assunzioni e problemi di navigazione secondo [research/usability.md](research/usability.md). Le verifiche automatiche restano evidenze separate.                                                                |
+| CL-07 | P0       | TODO           | CL-02–06 / M       | Validare il candidato su checkout pulito, completare audit di sicurezza e supply chain, Lighthouse e accessibilità, verificare i controlli finali di `main` e il rollback. Tag stabile coerente con versione e changelog, workflow di release verde, archivio e checksum verificati dal download.                                                             |
+| CL-08 | P2       | PARTIAL        | — / ricorrente     | CI mensile per la freschezza dei dati e conteggi anonimi esportabili dai quiz. Riesaminare periodicamente le fonti e registrare osservazioni reali prima di trarre conclusioni su adozione e comprensione.                                                                                                                                                    |
+
+## Baseline della sessione
+
+- `npm run verify` inizialmente bloccato da Prettier su `AGENTS.md` e `docs/COMPETENZE.md`. Dopo la correzione, verifica completa superata. JavaScript iniziale 103.382 byte gzip su un budget di 160.000.
+- `npm run audit:full` ha riportato zero vulnerabilità. Restano la verifica delle firme e i controlli di supply chain del workflow.
+- Consultati i README di ORBYX e CompTIA Security+ per i riferimenti bilingui e la demo. I README di CrackLab collegano già la demo Vercel pubblica.
+- Playwright/axe su Chromium 158 da pacchetto npm, 22 test superati. Il CDN del browser previsto da Playwright ha risposto HTTP 403. Il test del controllo facoltativo usa un endpoint intercettato.

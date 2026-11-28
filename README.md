@@ -30,7 +30,7 @@ password stays predictable.** You need both — a password that can't be guessed
 It is deliberately **not a cracker**: there is no input for third-party hashes, no wordlist cracking, and no
 "break this hash" function. That is an architectural choice, and every attack scenario ends in a concrete defense.
 
-## Features (MVP — "Prova")
+## Try
 
 - **Three preloaded examples** of different predictability, plus an invented sample you can type.
 - **Local predictability estimate** with [zxcvbn-ts](https://zxcvbn-ts.github.io/zxcvbn/) (estimated guesses, 0–4 score).
@@ -114,8 +114,8 @@ See [docs/PRIVACY.md](docs/PRIVACY.md) and [docs/THREAT_MODEL.md](docs/THREAT_MO
 src/
 ├─ model/       pure estimation formulas + data/ (benchmarks.json, pricing.json) + tests
 ├─ strength/    zxcvbn-ts integration (predictability estimate)
-├─ sim/         offline/online simulation engines (Fase 2)
-├─ scenarios/   guided "Capisci" scenarios as data (Fase 2)
+├─ sim/         synthetic teaching comparisons and local benchmark orchestration
+├─ lessons/     bilingual guided lessons and teaching materials
 ├─ components/  UI (StrengthMeter, …)
 ├─ i18n/        typed IT/EN catalogs
 ├─ store.ts     state — the only persistence boundary; the sample is never persisted
