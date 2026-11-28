@@ -10,6 +10,7 @@ import type { Language } from '../store';
 export interface Catalog {
   appName: string;
   tagline: string;
+  loadingPath: string;
   navigation: {
     label: string;
     try: string;
@@ -58,6 +59,7 @@ export interface Catalog {
 
 const it: Catalog = {
   appName: 'CrackLab',
+  loadingPath: 'Caricamento del percorso…',
   navigation: {
     label: 'Percorsi',
     try: 'Prova',
@@ -145,6 +147,7 @@ const it: Catalog = {
 
 const en: Catalog = {
   appName: 'CrackLab',
+  loadingPath: 'Loading the learning path…',
   navigation: {
     label: 'Learning paths',
     try: 'Try',

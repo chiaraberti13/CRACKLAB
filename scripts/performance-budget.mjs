@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-// Performance gate: resolve the entry chunk from the Vite manifest (stable source
-// key, not a volatile hash), gzip it, and compare against the versioned budget.
+// Resolve the entry and lazy-route chunks by stable Vite manifest keys.
 // Size Limit covers the same entry independently; this keeps the budget in git.
 import { gzipSync } from 'node:zlib';
 import { existsSync, readFileSync } from 'node:fs';
@@ -18,23 +17,42 @@ export function entryGzipBytes(distDir, manifest) {
   return gzipSync(buffer).length;
 }
 
+const routeSources = ['BreachCheck', 'Design', 'Learn'].map((name) => `src/components/${name}.tsx`);
+
+export function routeChunks(manifest) {
+  return routeSources.map((source) => {
+    const chunk = manifest[source];
+    if (!chunk?.isDynamicEntry) throw new Error(`Expected a lazy route chunk for ${source}.`);
+    return chunk.file;
+  });
+}
+
 function main() {
   const root = dirname(fileURLToPath(new URL('../package.json', import.meta.url)));
   const budgets = JSON.parse(readFileSync(join(root, 'performance-budgets.json'), 'utf8'));
   const manifestPath = join(root, 'dist', '.vite', 'manifest.json');
   if (!existsSync(manifestPath)) {
-    console.log('performance-budget: no dist manifest yet (run `npm run build` first); budget file is well-formed.');
-    return;
+    throw new Error('Vite manifest missing. Run `npm run build` before checking performance budgets.');
   }
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
-  const measured = entryGzipBytes(join(root, 'dist'), manifest);
-  const budget = budgets.budgets.initialJsGzipBytes;
-  const { ok } = evaluateBudget(measured, budget);
-  console.log(`Initial JS gzip: ${measured} bytes (budget ${budget}).`);
-  if (!ok) {
-    console.error(`error: initial JavaScript exceeds the budget by ${measured - budget} bytes.`);
-    process.exit(1);
+  const distDir = join(root, 'dist');
+  const checks = [
+    ['Initial JS', entryGzipBytes(distDir, manifest), budgets.budgets.initialJsGzipBytes],
+    ...routeChunks(manifest).map((file) => [
+      file,
+      gzipSync(readFileSync(join(distDir, file))).length,
+      budgets.budgets.routeChunkGzipBytes
+    ])
+  ];
+  for (const [label, size, budget] of checks) {
+    const { ok } = evaluateBudget(size, budget);
+    console.log(`${label} gzip: ${size} bytes (budget ${budget}).`);
+    if (!ok) {
+      console.error(`error: ${label} exceeds the budget by ${size - budget} bytes.`);
+      process.exitCode = 1;
+    }
   }
+  if (process.exitCode) return;
   console.log('Performance budget OK.');
 }
 

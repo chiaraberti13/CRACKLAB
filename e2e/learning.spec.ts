@@ -3,6 +3,21 @@ import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { lessonIds, lessons } from '../src/lessons/catalog';
 
+test('the experiment index and lesson titles follow the selected language', async ({ page }) => {
+  await page.goto('/capisci/');
+  await expect(page.getByRole('heading', { name: 'Esperimenti guidati' })).toBeVisible();
+  await expect(page).toHaveTitle('Esperimenti guidati · CrackLab');
+  await page.getByRole('button', { name: 'English' }).click();
+  await expect(page.getByRole('heading', { name: 'Guided experiments' })).toBeVisible();
+  await expect(page).toHaveTitle('Guided experiments · CrackLab');
+  await page.getByRole('link', { name: lessons.en.salt.title }).click();
+  await expect(page).toHaveURL(/\/capisci\/salt\/$/);
+  await expect(page).toHaveTitle(lessons.en.salt.title + ' · CrackLab');
+  await expect(page.getByRole('link', { name: lessons.en.salt.title })).toHaveAttribute('aria-current', 'page');
+  await page.getByRole('button', { name: 'Italiano' }).click();
+  await expect(page).toHaveTitle(lessons.it.salt.title + ' · CrackLab');
+});
+
 for (const id of lessonIds) {
   test('guided lesson, keyboard, quiz and fixed export: ' + id, async ({ page }) => {
     const lesson = lessons.it[id];

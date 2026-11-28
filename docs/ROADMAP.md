@@ -1,6 +1,6 @@
 # Roadmap di CrackLab
 
-Aggiornata il 28 novembre 2026 a partire da `3556cac`. Competenze di riferimento in [COMPETENZE.md](COMPETENZE.md).
+Aggiornata il 28 novembre 2026 a partire da `abdf5a8`. Competenze di riferimento in [COMPETENZE.md](COMPETENZE.md).
 
 ## Stato e perimetro
 
@@ -21,7 +21,20 @@ Il perimetro comprende stime dichiaratamente illustrative, lezioni difensive, mi
 | CL-07 | P0       | TODO           | CL-02–06 / M       | Validare il candidato su checkout pulito, completare audit di sicurezza e supply chain, Lighthouse e accessibilità, verificare i controlli finali di `main` e il rollback. Tag stabile coerente con versione e changelog, workflow di release verde, archivio e checksum verificati dal download.                                                             |
 | CL-08 | P2       | PARTIAL        | — / ricorrente     | CI mensile per la freschezza dei dati e conteggi anonimi esportabili dai quiz. Riesaminare periodicamente le fonti e registrare osservazioni reali prima di trarre conclusioni su adozione e comprensione.                                                                                                                                                    |
 
-## Baseline della sessione
+## Valutazione evolutiva
+
+La SPA statica mantiene calcoli e stato nel browser e serve lo stesso artefatto su hosting statico. La separazione per percorso riduce il peso della pagina iniziale senza cambiare formule, dizionari o supporto offline. Aggiungere un backend per preferenze o quiz aumenterebbe manutenzione e perimetro dei dati senza risolvere un limite osservato. La ricerca precedente rimane il riferimento per il confronto di prodotto, mentre le prove formative devono misurare comprensione e facilità d'uso.
+
+| ID    | Priorità / stima | Stato        | Scelta, beneficio e criterio di chiusura                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----- | ---------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CL-09 | P0 / S           | FEATURE_DONE | Reidratazione delle sole preferenze valide, con funzionamento in memoria se Web Storage è bloccato. Intervento localizzato nello store, compatibile con preferenze valide della versione 1. Test di payload precedente e storage indisponibile superati.                                                                                                                                                                                                                                 |
+| CL-10 | P1 / S           | FEATURE_DONE | Capisci ha un indice bilingue con accessi visibili, messaggio per la lezione sconosciuta quando la SPA gestisce il percorso e titolo della scheda aggiornato al cambio lingua. Verificati indice, cambio lingua e accesso diretto. La verifica manuale con tecnologia assistiva confluisce in CL-06.                                                                                                                                                                                     |
+| CL-11 | P1 / M           | FEATURE_DONE | Caricamento separato di Capisci, Progetta e controllo facoltativo. Il budget esistente ora controlla i tre moduli e fallisce se manca il manifest o un percorso viene reintegrato nell'entry. Build e regressioni Chromium, comprese le lezioni offline, superate.                                                                                                                                                                                                                       |
+| CL-12 | P1 / M           | TODO         | Dopo CL-11 misurare separatamente volume del precache, tempo della prima stima e durata del thread principale su dispositivi di fascia bassa. Il primo calcolo carica dizionari IT/EN molto più grandi dei moduli delle pagine. Prima di introdurre caricamento offline selettivo o un worker dedicato, verificare che i risultati del modello rimangano equivalenti e che i contenuti offline restino raggiungibili. Accorpa budget del grafo iniziale e misura delle risorse in cache. |
+
+## Evidenze delle sessioni
+
+- Verifica della tranche evolutiva da `abdf5a8`. `npm run verify` con 39 test Vitest, build e budget superati. JavaScript iniziale sceso da 103.382 a 94.349 byte gzip (−8,7%). Ciascun modulo di percorso pesa meno di 6 kB gzip. Playwright/axe su Chromium con 23 test superati, inclusi uso offline e indice bilingue.
 
 - `npm run verify` inizialmente bloccato da Prettier su `AGENTS.md` e `docs/COMPETENZE.md`. Dopo la correzione, verifica completa superata. JavaScript iniziale 103.382 byte gzip su un budget di 160.000.
 - `npm run audit:full` ha riportato zero vulnerabilità. `npm audit signatures` ha verificato 342 firme del registro e 131 attestazioni.

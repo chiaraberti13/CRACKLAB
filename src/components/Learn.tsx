@@ -1,6 +1,6 @@
 import { CaseComparison } from './CaseComparison';
-import { useState } from 'react';
-import { lessonIds, lessons, type LessonId } from '../lessons/catalog';
+import { useEffect, useState } from 'react';
+import { lessonIds, lessonIndex, lessons, type LessonId } from '../lessons/catalog';
 import { scene } from '../lessons/scene';
 import type { Language } from '../store';
 const controls = {
@@ -143,13 +143,32 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
 export function Learn({ language }: { language: Language }) {
   const slug = location.pathname.split('/')[2];
   const id = lessonIds.find((x) => x === slug);
+  const copy = lessonIndex[language];
+  const title = id ? lessons[language][id].title : copy.title;
+  useEffect(() => {
+    document.title = title + ' · CrackLab';
+  }, [title]);
   return (
     <>
-      <nav aria-label={language === 'it' ? 'Esperimenti' : 'Experiments'} className="panel">
-        <ul className="space-y-2">
+      <nav aria-label={copy.title} className="panel">
+        {!id && (
+          <>
+            <h2>{copy.title}</h2>
+            <p>{slug ? copy.missingLesson : copy.introduction}</p>
+          </>
+        )}
+        <ul className={id ? 'space-y-2' : 'grid gap-2 sm:grid-cols-2'}>
           {lessonIds.map((k) => (
             <li key={k}>
-              <a href={'/capisci/' + k + '/'} aria-current={k === id ? 'page' : undefined}>
+              <a
+                href={'/capisci/' + k + '/'}
+                aria-current={k === id ? 'page' : undefined}
+                className={
+                  id
+                    ? 'inline-block py-1 aria-[current=page]:font-semibold'
+                    : 'flex h-full min-h-11 items-center rounded-lg border border-stroke px-3 py-2 hover:border-accent'
+                }
+              >
                 {lessons[language][k].title}
               </a>
             </li>

@@ -1,15 +1,17 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useId, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { LocalKdfLab } from './components/LocalKdfLab';
 import { SampleResult } from './components/SampleResult';
-import { BreachCheck } from './components/BreachCheck';
-import { Learn } from './components/Learn';
-import { Tools } from './components/Tools';
 import { useCatalog } from './i18n';
 import { SCENARIOS } from './model/types';
 import type { Scenario } from './model/types';
 import { MAX_SAMPLE_LENGTH } from './strength/limits';
 import { useStore } from './store';
+
+const Learn = lazy(() => import('./components/Learn').then(({ Learn }) => ({ default: Learn })));
+const Design = lazy(() => import('./components/Design').then(({ Design }) => ({ default: Design })));
+const BreachCheck = lazy(() =>
+  import('./components/BreachCheck').then(({ BreachCheck }) => ({ default: BreachCheck }))
+);
 
 export default function App() {
   const language = useStore((s) => s.language);
@@ -125,15 +127,22 @@ export default function App() {
             </a>
           ))}
         </nav>
-        {section === 'hibp' ? (
-          <BreachCheck language={language} />
-        ) : section === 'capisci' ? (
-          <Learn language={language} />
-        ) : section === 'progetta' ? (
-          <>
-            <LocalKdfLab language={language} />
-            <Tools language={language} />
-          </>
+        {section === 'hibp' || section === 'capisci' || section === 'progetta' ? (
+          <Suspense
+            fallback={
+              <p role="status" className="mt-6 text-ink-secondary">
+                {t.loadingPath}
+              </p>
+            }
+          >
+            {section === 'hibp' ? (
+              <BreachCheck language={language} />
+            ) : section === 'capisci' ? (
+              <Learn language={language} />
+            ) : (
+              <Design language={language} />
+            )}
+          </Suspense>
         ) : (
           <>
             <div

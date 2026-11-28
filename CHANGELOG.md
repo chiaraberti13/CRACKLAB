@@ -8,6 +8,8 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ### Added
 
+- Add a bilingual guided-experiment index with localized browser titles.
+
 - Fixed offline work comparisons and aggregate authentication logs for comparing rate limits, lockout, delay, correlation and MFA.
 - Guided learning paths, optional quizzes and fixed-content teaching cards in Italian and English.
 - Configurable KDF measurements, synthetic-only reports, policy and passphrase experiments, an offline bundle and a separately consented padded breach lookup.
@@ -19,11 +21,17 @@ All notable changes to CrackLab are documented in this file. The project follows
 
 ### Fixed
 
+- Restore only valid preferences and keep the interface usable when browser storage is blocked.
+- Load the Learn, Design and breach-check routes separately and enforce their JavaScript budgets.
+
 - Restore reproducible installation by constraining TypeScript to the supported 6.0 series.
 - Clarify that scenarios keep the same guess rank and that device-local KDF measurements are separate from the rate assumptions.
 - Let keyboard users close the mobile menu with Escape and return focus to the menu button.
 
 ### Italiano
+
+- Indice bilingue degli esperimenti e titoli delle schede localizzati.
+- Ripristino delle sole preferenze valide, anche con gestione dello storage bloccato, e caricamento separato dei percorsi con budget verificato.
 
 - Il menu mobile si chiude con Escape e riporta il focus al pulsante di apertura.
 - Laboratorio sviluppatori: esecuzione reale di MD5, SHA-256, bcrypt e Argon2id in un Web Worker su stringa sintetica, con limiti di parametri e timeout; risultati etichettati misurato/derivato.

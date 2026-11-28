@@ -1,5 +1,19 @@
 export const lessonIds = ['same-password', 'salt', 'lockout', 'mfa'] as const;
 export type LessonId = (typeof lessonIds)[number];
+
+export const lessonIndex = {
+  it: {
+    title: 'Esperimenti guidati',
+    introduction: 'Scegli una domanda, fai una previsione e verifica come una difesa cambia il risultato.',
+    missingLesson: 'Esperimento non trovato. Scegline uno qui sotto.'
+  },
+  en: {
+    title: 'Guided experiments',
+    introduction: 'Choose a question, make a prediction and see how a defense changes the outcome.',
+    missingLesson: 'Experiment not found. Choose one below.'
+  }
+};
+
 interface Lesson {
   title: string;
   prediction: [string, string];

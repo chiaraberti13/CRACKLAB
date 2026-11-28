@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import type { Scenario } from './model/types';
+import { SCENARIOS, type Scenario } from './model/types';
 
 /**
  * Global state. This module is the **only approved persistence boundary** (see
@@ -32,24 +32,30 @@ interface CrackLabState extends Preferences {
 
 const PREFERENCES_VERSION = 1;
 
-/**
- * An in-memory fallback so the store works in Node/jsdom tests and in browsers
- * where Web Storage is blocked. We never claim secure erasure: in JavaScript,
- * strings are immutable and their removal depends on the garbage collector.
- */
-function createMemoryStorage(): Storage {
-  const map = new Map<string, string>();
-  return {
-    getItem: (key) => (map.has(key) ? (map.get(key) as string) : null),
-    setItem: (key, value) => void map.set(key, String(value)),
-    removeItem: (key) => void map.delete(key),
-    clear: () => map.clear(),
-    key: (index) => Array.from(map.keys())[index] ?? null,
-    get length() {
-      return map.size;
+// Preferences remain usable in the store when browser storage is unavailable.
+const preferenceStorage = createJSONStorage<Preferences>(() => ({
+  getItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
     }
-  } as Storage;
-}
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // The preference has already been applied to in-memory state.
+    }
+  },
+  removeItem(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      // Storage access can be disabled by the browser.
+    }
+  }
+}));
 
 export const useStore = create<CrackLabState>()(
   persist(
@@ -67,7 +73,17 @@ export const useStore = create<CrackLabState>()(
     {
       name: 'cracklab:prefs',
       version: PREFERENCES_VERSION,
-      storage: createJSONStorage(() => (typeof localStorage !== 'undefined' ? localStorage : createMemoryStorage())),
+      storage: preferenceStorage,
+      merge: (persisted, current) => {
+        if (typeof persisted !== 'object' || persisted === null) return current;
+        const { language, theme, scenario } = persisted as Partial<Record<keyof Preferences, unknown>>;
+        return {
+          ...current,
+          language: language === 'it' || language === 'en' ? language : current.language,
+          theme: theme === 'dark' || theme === 'light' ? theme : current.theme,
+          scenario: SCENARIOS.find((candidate) => candidate === scenario) ?? current.scenario
+        };
+      },
       // The allowlist: only non-sensitive preferences persist. `sample` is omitted
       // on purpose, so the password input can never be written to storage.
       partialize: (state) => ({
