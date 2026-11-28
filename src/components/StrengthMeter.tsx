@@ -43,7 +43,7 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
       <p className="mt-1 text-sm text-ink-secondary">{t.comparisonIntro}</p>
 
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full border-collapse text-left text-sm">
+        <table className="cmp w-full border-collapse text-left text-sm">
           <thead>
             <tr className="text-ink-muted">
               <th scope="col" className="py-2 pr-3 font-medium">
@@ -70,7 +70,7 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
                   <th scope="row" className="py-3 pr-3 font-mono font-medium text-ink-primary">
                     {t.algorithm[e.algorithm]}
                   </th>
-                  <td className="py-3 pr-3">
+                  <td className="py-3 pr-3" data-label={t.timeLabel}>
                     <span className={fast ? 'font-semibold text-attack' : 'font-semibold text-defense'}>
                       <span
                         className="sand"
@@ -82,8 +82,10 @@ export function StrengthMeter({ guesses, scenario, language }: StrengthMeterProp
                       {t.magnitude[magnitude]}
                     </span>
                   </td>
-                  <td className="py-3 pr-3 font-mono text-ink-secondary">{formatCost(e.usd, language)}</td>
-                  <td className="py-3">
+                  <td className="py-3 pr-3 font-mono text-ink-secondary" data-label={t.costLabel}>
+                    {formatCost(e.usd, language)}
+                  </td>
+                  <td className="cmp-detail py-3">
                     <span
                       className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${kindClasses(e.hashrateKind)}`}
                     >

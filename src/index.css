@@ -34,10 +34,21 @@
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  /* Shared shape and rhythm so panels and cards read as one system. */
+  --radius-card: 0.85rem;
+  --radius-control: 0.5rem;
+  --control-min: 2.75rem; /* 44px touch target */
 }
 
 :root {
   color-scheme: dark;
+}
+
+html {
+  /* Keep text legible without the browser auto-inflating it on rotation. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -45,13 +56,25 @@ body {
   background-color: var(--color-canvas);
   color: var(--color-ink-primary);
   font-family: var(--font-sans);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  /* Long mono values (hashes, scientific notation) must never force the page wider. */
+  overflow-wrap: break-word;
+}
+
+/* Media and tables stay inside their container on small screens. */
+img,
+svg,
+video,
+table {
+  max-width: 100%;
 }
 
 /* Visible focus for keyboard users, never removed. */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,25 +108,39 @@ body {
   --color-code-bg: #fff;
   --color-code-ink: #18222f;
 }
+
+/* ---- Navigation between the three paths ---- */
 .path-link {
+  display: inline-block;
   color: var(--color-accent);
-  padding: 0.4rem 0.1rem;
+  padding: 0.5rem 0.25rem;
+  min-height: var(--control-min);
+  line-height: 1.7;
 }
 .path-link[aria-current='page'] {
   border-bottom: 2px solid currentColor;
   font-weight: 700;
 }
+
+/* ---- Panels: same shape/elevation as the Tailwind cards, so the whole app
+       reads as one surface system. Padding shrinks on phones. ---- */
 .panel {
   margin-top: 1.25rem;
   border: 1px solid var(--color-stroke);
   background: var(--color-surface);
-  padding: 1.25rem;
-  border-radius: 0.8rem;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  border-radius: var(--radius-card);
 }
 .panel h2 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 650;
+  line-height: 1.3;
   margin-bottom: 0.6rem;
+}
+.panel h3 {
+  font-size: 1rem;
+  font-weight: 650;
+  margin: 0.75rem 0 0.4rem;
 }
 .panel p,
 .panel fieldset,
@@ -111,24 +148,138 @@ body {
 .panel label {
   margin-block: 0.75rem;
 }
+.panel fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.panel legend {
+  font-weight: 600;
+  padding: 0;
+}
+
+/* Controls: real buttons with a comfortable 44px touch target, 16px text so
+   iOS never zooms the viewport on focus, and clear hover/active feedback. */
 .panel button,
 .panel select,
 .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: var(--control-min);
   border: 1px solid var(--color-stroke-strong);
-  border-radius: 0.4rem;
-  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-control);
+  padding: 0.5rem 0.9rem;
   margin: 0.25rem 0.5rem 0.25rem 0;
+  font-size: 1rem;
   background: var(--color-surface);
   color: var(--color-ink-primary);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+.panel button:hover,
+.panel select:hover,
+.action:hover {
+  border-color: var(--color-accent);
+}
+.panel button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.panel button[aria-pressed='true'] {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  font-weight: 600;
 }
 .panel a {
   color: var(--color-accent);
   text-decoration: underline;
 }
-.panel button[aria-pressed='true'] {
-  border-color: var(--color-accent);
-  background: var(--color-accent-soft);
+
+/* Full-width form rows on phones; inline from small screens up. */
+.panel label.block {
+  display: block;
 }
+.panel label.block select,
+.panel input[type='range'] {
+  max-width: 100%;
+}
+.panel input[type='password'],
+.panel input[type='text'] {
+  min-height: var(--control-min);
+  width: 100%;
+  max-width: 22rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-stroke-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-code-bg);
+  color: var(--color-code-ink);
+  font-family: var(--font-mono);
+}
+.panel input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: -0.2rem;
+  accent-color: var(--color-accent);
+}
+
+/* ---- Responsive comparison: a table on wide screens, stacked cards on phones.
+       One DOM, so the table semantics (row headers) stay intact for screen
+       readers; only the presentation changes at narrow widths. ---- */
+@media (max-width: 639px) {
+  .cmp thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .cmp,
+  .cmp tbody,
+  .cmp tr,
+  .cmp td,
+  .cmp th {
+    display: block;
+    width: 100%;
+  }
+  .cmp tr {
+    border: 1px solid var(--color-stroke);
+    border-radius: var(--radius-card);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .cmp tr > th[scope='row'] {
+    font-size: 1.05rem;
+    padding: 0 0 0.5rem;
+  }
+  .cmp td {
+    border: 0;
+    padding: 0.3rem 0;
+  }
+  .cmp td[data-label] {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .cmp td[data-label]::before {
+    content: attr(data-label);
+    color: var(--color-ink-muted);
+    font-weight: 500;
+  }
+  .cmp td.cmp-detail {
+    display: block;
+    margin-top: 0.4rem;
+  }
+}
+
+/* ---- The cracking hourglass ---- */
 .sand {
   width: 1.1rem;
   height: 1.3rem;

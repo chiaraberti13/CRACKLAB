@@ -30,7 +30,7 @@ export default function App() {
   const t = useCatalog(language);
   const inputId = useId();
   return (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh overflow-x-hidden">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-surface focus:px-3 focus:py-2 focus:text-ink-primary"
@@ -39,12 +39,12 @@ export default function App() {
       </a>
 
       <header className="border-b border-stroke">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
+        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-3">
           <span className="font-mono text-lg font-semibold text-ink-primary">{t.appName}</span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               type="button"
-              className="rounded border border-stroke px-3"
+              className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? (it ? 'Tema chiaro' : 'Light theme') : it ? 'Tema scuro' : 'Dark theme'}
@@ -52,7 +52,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
-              className="rounded border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
+              className="inline-flex min-h-11 items-center rounded-lg border border-stroke px-3 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
             >
               {t.langToggle}
             </button>
@@ -117,7 +117,7 @@ export default function App() {
                 spellCheck={false}
                 autoCorrect="off"
                 autoCapitalize="off"
-                className="mt-1 w-full rounded-lg border border-stroke bg-code-bg px-3 py-2 font-mono text-code-ink placeholder:text-ink-muted"
+                className="mt-1 min-h-11 w-full rounded-lg border border-stroke-strong bg-code-bg px-3 py-2 font-mono text-code-ink placeholder:text-ink-muted"
               />
 
               <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -127,7 +127,7 @@ export default function App() {
                     key={example.id}
                     type="button"
                     onClick={() => setSample(example.value)}
-                    className="rounded-full border border-stroke px-3 py-1 text-sm text-ink-secondary hover:border-stroke-strong"
+                    className="inline-flex min-h-10 items-center rounded-full border border-stroke px-4 py-1.5 text-sm text-ink-secondary hover:border-stroke-strong"
                   >
                     {example.label}
                   </button>
@@ -136,7 +136,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={clearAll}
-                    className="ml-auto rounded-full border border-stroke px-3 py-1 text-sm text-attack hover:border-attack"
+                    className="ml-auto inline-flex min-h-10 items-center rounded-full border border-stroke px-4 py-1.5 text-sm text-attack hover:border-attack"
                   >
                     {t.clearAll}
                   </button>
@@ -156,7 +156,7 @@ export default function App() {
                       aria-pressed={active}
                       onClick={() => setScenario(id)}
                       title={t.scenarios[id].desc}
-                      className={`rounded-lg border px-3 py-1.5 text-sm ${
+                      className={`inline-flex min-h-11 items-center rounded-lg border px-3.5 py-1.5 text-sm ${
                         active
                           ? 'border-accent bg-accent-soft text-ink-primary'
                           : 'border-stroke text-ink-secondary hover:border-stroke-strong'

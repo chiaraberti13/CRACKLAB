@@ -75,7 +75,7 @@ function Exercise({ id, language }: { id: LessonId; language: Language }) {
             <input type="checkbox" checked={guard} onChange={(e) => setGuard(e.target.checked)} />{' '}
             {controls[language][lessonIds.indexOf(id)]}
           </label>
-          <dl aria-live="polite" className="grid grid-cols-2 gap-2">
+          <dl aria-live="polite" className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {rows.map(([k, v]) => (
               <div key={k} className="rounded border border-stroke p-3">
                 <dt>{k}</dt>
