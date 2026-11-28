@@ -86,7 +86,8 @@ when a benchmark is older than 12 months. See [docs/MODEL.md](docs/MODEL.md).
 
 The password never leaves the device — and this is **tested**, not just claimed:
 
-- No network access while typing or computing (a Playwright [network-privacy test](e2e/network-privacy.spec.ts) asserts it).
+- The strength estimator computes locally. A [Playwright test](e2e/network-privacy.spec.ts) checks that
+  requests stay on the app’s origin and carry no sample while you type and calculate.
 - The input is never put in a URL, `localStorage`, a report or a share card. ESLint makes `fetch`, DOM-HTML sinks and
   browser storage a build error outside the one reviewed boundary (`src/store.ts`).
 - Strict CSP and security headers (`vercel.json`), self-hosted assets, no third-party scripts or fonts.

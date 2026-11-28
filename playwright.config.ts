@@ -5,7 +5,7 @@ import { existsSync } from 'node:fs';
  * End-to-end smoke and privacy tests.
  *
  * The suite runs against the production build served by `vite preview`, so it
- * exercises the same lazy chunks, hash routing and CSP-safe assets that ship to
+ * exercises the same lazy chunks, path-based routing and CSP-safe assets that ship to
  * users, not a dev-server approximation. The network-privacy spec asserts the
  * core promise: nothing leaves the browser while typing and computing. Only
  * Chromium runs for now; Firefox and WebKit are added once the suite is stable.

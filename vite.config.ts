@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
-import deployment from './vercel.json';
+import deployment from './vercel.json' with { type: 'json' };
 
 export default defineConfig(({ mode }) => ({
   plugins: [

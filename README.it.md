@@ -86,7 +86,8 @@ supera i 12 mesi. Vedi [docs/MODEL.md](docs/MODEL.md).
 
 La password non lascia il dispositivo — ed è **testato**, non solo dichiarato:
 
-- Nessuna richiesta di rete durante digitazione e calcolo (un [test di privacy di rete](e2e/network-privacy.spec.ts) Playwright lo verifica).
+- La stima viene calcolata localmente. Un [test Playwright](e2e/network-privacy.spec.ts) verifica che le richieste
+  restino sulla stessa origine e che nessuna contenga il campione durante la digitazione e il calcolo.
 - L'input non finisce mai in URL, `localStorage`, report o share card. ESLint rende `fetch`, i sink DOM-HTML e lo storage
   del browser un errore di build fuori dall'unico confine rivisto (`src/store.ts`).
 - CSP stringente e header di sicurezza (`vercel.json`), asset self-hosted, nessuno script o font di terze parti.

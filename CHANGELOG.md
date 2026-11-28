@@ -20,10 +20,12 @@ All notable changes to CrackLab are documented in this file. The project follows
 ### Fixed
 
 - Restore reproducible installation by constraining TypeScript to the supported 6.0 series.
-- Clarify that scenarios keep the same guess rank and that local KDF benchmarking is still planned.
+- Clarify that scenarios keep the same guess rank and that device-local KDF measurements are separate from the rate assumptions.
+- Let keyboard users close the mobile menu with Escape and return focus to the menu button.
 
 ### Italiano
 
+- Il menu mobile si chiude con Escape e riporta il focus al pulsante di apertura.
 - Laboratorio sviluppatori: esecuzione reale di MD5, SHA-256, bcrypt e Argon2id in un Web Worker su stringa sintetica, con limiti di parametri e timeout; risultati etichettati misurato/derivato.
 - Dettagli IT/EN delle stime con parametri, hardware, fonti, date, prezzi e formule.
 - Installazione riproducibile con TypeScript compatibile; documentazione allineata alle funzionalità disponibili.
